@@ -54,8 +54,8 @@
             </form>
             <br>
             <div>
-            	<a href="${contextPath }/patient/register">회원가입</a> /
-            	<a href="${contextPath }/medical/login">의료진 로그인</a>
+            	<a href="${contextPath }/patient/register">일반 회원가입</a> /
+ 				<a href="${contextPath }/medical/register">의료진 회원가입</a>
             </div>
           </div>
         </div>
