@@ -41,12 +41,12 @@
         </div>
         <div class="row block-9">
           <div class="col-md-6 pr-md-5">
-            <form action="${contextPath }/patient/login">
+            <form action="${contextPath }/common/login">
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="ID를 입력해주세요.">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Password를 입력해주세요.">
+                <input type="password" class="form-control" placeholder="Password를 입력해주세요.">
               </div>
               <div>
               	<input type="submit" value="전송" class="btn btn-primary btn-outline-primary"/>
