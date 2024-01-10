@@ -26,48 +26,40 @@
       <div class="container">
         <div class="row d-flex mb-5 contact-info">
           <div class="col-md-12 mb-4">
-            <h2 class="h4">Contact Information</h2>
+            <h2 class="h4">Hospital Information</h2>
           </div>
           <div class="w-100"></div>
           <div class="col-md-3">
-            <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+            <p><span>주소:</span> 서울특별시 송파구 잠실동 잠실역 8번출구 앞 30m</p>
           </div>
           <div class="col-md-3">
-            <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+            <p><span>문의:</span>02-111-2222</p>
           </div>
           <div class="col-md-3">
-            <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
-          </div>
-          <div class="col-md-3">
-            <p><span>Website</span> <a href="#">yoursite.com</a></p>
+            <p><span>Email:</span>abc@hospital.com</p>
           </div>
         </div>
         <div class="row block-9">
           <div class="col-md-6 pr-md-5">
-            <form action="#">
+            <form action="${contextPath }/patient/login">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your Name">
+                <input type="text" class="form-control" placeholder="ID를 입력해주세요.">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your Email">
+                <input type="text" class="form-control" placeholder="Password를 입력해주세요.">
               </div>
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Subject">
-              </div>
-              <div class="form-group">
-                <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-              </div>
-              <div class="form-group">
-                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+              <div>
+              	<input type="submit" value="전송" class="btn btn-primary btn-outline-primary"/>
               </div>
             </form>
-          
+            <br>
+            <div>
+            	<a href="${contextPath }/patient/register">회원가입</a> /
+            	<a href="${contextPath }/medical/login">의료진 로그인</a>
+            </div>
           </div>
-
-          <div class="col-md-6" id="map"></div>
         </div>
       </div>
     </section>
-	
 </body>
 </html>
