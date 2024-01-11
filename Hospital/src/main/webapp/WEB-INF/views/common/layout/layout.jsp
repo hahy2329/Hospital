@@ -24,6 +24,36 @@
     <link rel="stylesheet" href="${contextPath }/resources/dentacare-gh-pages/css/style.css">
     <script src="${contextPath }/resources/dentacare-gh-pages/js/jquery-3.2.1.min.js"></script>
     <script src="${contextPath }/resources/ckeditor/ckeditor.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script>
+		function execDaumPostcode() {
+		    new daum.Postcode({
+		        oncomplete: function(data) {
+		
+		            var fullRoadAddr = data.roadAddress; 
+		            var extraRoadAddr = ''; 
+		
+		            if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+		                extraRoadAddr += data.bname;
+		            }
+		            if (data.buildingName !== '' && data.apartment === 'Y'){
+		               extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+		            }
+		            if (extraRoadAddr !== ''){
+		                extraRoadAddr = ' (' + extraRoadAddr + ')';
+		            }
+		            if (fullRoadAddr !== ''){
+		                fullRoadAddr += extraRoadAddr;
+		            }
+		
+		            document.getElementById('patientZipcode').value = data.zonecode; //5자리 새우편번호 사용
+		            document.getElementById('patientRoadAddress').value = fullRoadAddr;
+		            document.getElementById('patientJibunAddress').value = data.jibunAddress;
+		          
+		        }
+		    }).open();
+		}
+	</script>
 </head>
 <body>
 	

@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,7 @@
 <body>
 	<div class="row block-9">
           <div class="col-md-6 pr-md-5">
-            <form action="${contextPath }/common/login">
+            <form action="${contextPath }/common/login" method="post">
               <div class="form-group">
                 <input type="text" name="patientId" class="form-control" placeholder="ID를 입력해주세요.">
               </div>
@@ -31,33 +32,44 @@
               	<div>
                  	<select id="birthM" class="form-control" required="required">
                        <c:forEach var="i" begin="1" end="12">
-                            			<c:choose>
-                            				<c:when test="${i<10 }">
-                            					<option>0${i }</option>
-                            				</c:when>
-                            				<c:otherwise>
-                            					<option>${i }</option>
-                            				</c:otherwise>
-                            			</c:choose>
-                            		</c:forEach>
-                            	</select>
-                            </div>
-                            <div>
-                            	<select id="birthD" class="form-control" required="required">
-                            		<c:forEach var="i" begin="1" end="31">
-                            			<c:choose>
-                            				<c:when test="${i<10 }">
-                            					<option>0${i }</option>
-                            				</c:when>
-                            				<c:otherwise>
-                            					<option>${i }</option>
-                            				</c:otherwise>
-                            			</c:choose>
-                            		</c:forEach>
-                            	</select>
-                            </div>
-                            <input type="hidden" name="birthDt"/>
-                            </div>
+                            	<c:choose>
+                            		<c:when test="${i<10 }">
+                            			<option>0${i }</option>
+                            		</c:when>
+                            		<c:otherwise>
+                            			<option>${i }</option>
+                            		</c:otherwise>
+                            	</c:choose>
+                          </c:forEach>
+                      </select>
+                 </div>
+                 <div>
+                     <select id="birthD" class="form-control" required="required">
+                           <c:forEach var="i" begin="1" end="31">
+                            	<c:choose>
+                            		<c:when test="${i<10 }">
+                            			<option>0${i }</option>
+                            		</c:when>
+                            		<c:otherwise>
+                            			<option>${i }</option>
+                            		</c:otherwise>
+                            	</c:choose>
+                            </c:forEach>
+                      </select>
+                  </div>
+                      <input type="hidden" name="patientBirth"/>
+                <div> 	
+                	<input type="email" class="form-control" name="patientEmail" placeholder="E-mail을 입력해주세요.">
+              	</div>
+              	<div>
+              		<input type="text" id="patientZipcode" name="patientZipcode"  class="form-control" placeholder="우편번호"> <br>
+              		<input type="button" value="검색" onclick="execDaumPostcode();" class="btn btn-primary btn-outline-primary"> 
+              		<input type="text" id="patientRoadAddress" name="patientRoadAddress"  class="form-control" placeholder="도로명 주소">
+              		<input type="text" id="patientJibunAddress" name="patientJibunAddress"  class="form-control" placeholder="지번 주소">
+              		<input type="text" id="patientNamujiAddress" name="patientNamujiAddress"  class="form-control" placeholder="나머지 주소">
+              	</div>
+              	    <br>
+               </div>
               <div>
               	<input type="submit" value="전송" class="btn btn-primary btn-outline-primary"/>
               </div>
