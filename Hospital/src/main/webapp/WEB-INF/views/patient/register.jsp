@@ -11,22 +11,31 @@
 	var isValidId = false;
 	var special_pattern = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
 	
+	var pattern1 = /[0-9]/;
+	var pattern2 = /[a-zA-Z]/;
+	var pattern3 = /[~!@\#$%<>^&*]/;
+	
 	$().ready(function(){
 		
-		$("#btnOverlapped").click(function(){
+		$(document).on("click", "#btnOverlapped", function(){
+			
+			$(".answer").empty();
 			
 			var patientId = $("#patientId").val();
 			
 			if(patientId == ''){
 				alert("ID를 입력하세요.");
+				$(".answer").append("<p style='color: red;'>" + "ID를 입력해 주세요." + "</p>");
 				return;
 			}
 			if(patientId.search(/\s/) != -1){
 				alert("공백은 허용할 수 없습니다.");
+				$(".answer").append("<p style='color: red;'>" + "공백은 허용할 수 없습니다." + "</p>");
 				return false;
 			} //공백 체크
 			if(special_pattern.test(patientId) == true){
 				alert("특수문자는 허용할 수 없습니다.");
+				$(".answer").append("<p style='color: red;'>" + "특수문자는 사용할 수 없습니다." + "</p>");
 				return false;
 			} //특수문자 체크
 			
@@ -34,11 +43,14 @@
 				type : "get",
 				url : "${contextPath}/patient/checkDuplicatedId?patientId=" + patientId,
 				success : function(data){
-					if(data = "duplicate"){
+					if(data == "duplicate"){
 						alert("사용할 수 있는 ID입니다.");
+						$(".answer").append("<p style='color: green;'>" + "중복체크 완료" + "</p>");
+						$("#btnOverlapped").remove();
 						isValidId = true;
 					}else{
 						alert("사용할 수 없는 ID입니다.");
+						$(".answer").append("<p style='color: red;'>" + "사용할 수 없는 ID입니다." + "</p>");
 						isValidId = false;
 					}
 				}
@@ -56,11 +68,14 @@
           <div class="col-md-6 pr-md-5">
             <form action="${contextPath }/common/login" method="post">
               <div class="form-group">
-                <input type="text" name="patientId" class="form-control" placeholder="ID를 입력해주세요.">
-                <input type="button" id="btnOverlapped" value="중복확인" class="btn btn-primary btn-outline-primary">
+                <input type="text" name="patientId" id="patientId" class="form-control" placeholder="ID를 입력해주세요.">
+                <p class="answer"></p>
+                <br>
+                <input type="button" id="btnOverlapped" value="중복확인">
               </div>
               <div class="form-group">
                 <input type="password" name="patientPw" class="form-control" placeholder="Password를 입력해주세요.">
+                <input type="password" id="confirmPasswd" placeholder="비밀번호를 다시 입력해주세요." class="form-control">
               </div>              
               <div class="form-group">
                 <input type="text" name="patientName" class="form-control" placeholder="이름을 입력해주세요.">

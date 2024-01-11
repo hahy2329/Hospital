@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="${contextPath }/resources/dentacare-gh-pages/css/flaticon.css">
     <link rel="stylesheet" href="${contextPath }/resources/dentacare-gh-pages/css/icomoon.css">
     <link rel="stylesheet" href="${contextPath }/resources/dentacare-gh-pages/css/style.css">
-    <script src="${contextPath }/resources/dentacare-gh-pages/js/jquery-3.2.1.min.js"></script>
+    <script src="${contextPath }/resources/dentacare-gh-pages/js/jquery-3.3.1.min.js"></script>
     <script src="${contextPath }/resources/ckeditor/ckeditor.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
@@ -69,7 +69,7 @@
 		<tiles:insertAttribute name="footer"/>
 	<!-- Footer Section End -->
 	
-	  <script src="js/jquery.min.js"></script>
+  <script src="${contextPath }/resources/dentacare-gh-pages/js/jquery.min.js"></script>
   <script src="${contextPath }/resources/dentacare-gh-pages/js/jquery-migrate-3.0.1.min.js"></script>
   <script src="${contextPath }/resources/dentacare-gh-pages/js/popper.min.js"></script>
   <script src="${contextPath }/resources/dentacare-gh-pages/js/bootstrap.min.js"></script>
