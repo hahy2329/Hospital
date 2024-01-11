@@ -6,6 +6,50 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+	
+	var isValidId = false;
+	var special_pattern = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
+	
+	$().ready(function(){
+		
+		$("#btnOverlapped").click(function(){
+			
+			var patientId = $("#patientId").val();
+			
+			if(patientId == ''){
+				alert("ID를 입력하세요.");
+				return;
+			}
+			if(patientId.search(/\s/) != -1){
+				alert("공백은 허용할 수 없습니다.");
+				return false;
+			} //공백 체크
+			if(special_pattern.test(patientId) == true){
+				alert("특수문자는 허용할 수 없습니다.");
+				return false;
+			} //특수문자 체크
+			
+			$.ajax({
+				type : "get",
+				url : "${contextPath}/patient/checkDuplicatedId?patientId=" + patientId,
+				success : function(data){
+					if(data = "duplicate"){
+						alert("사용할 수 있는 ID입니다.");
+						isValidId = true;
+					}else{
+						alert("사용할 수 없는 ID입니다.");
+						isValidId = false;
+					}
+				}
+			});
+		});
+		
+		
+		
+	});
+
+</script>
 </head>
 <body>
 	<div class="row block-9">
@@ -13,6 +57,7 @@
             <form action="${contextPath }/common/login" method="post">
               <div class="form-group">
                 <input type="text" name="patientId" class="form-control" placeholder="ID를 입력해주세요.">
+                <input type="button" id="btnOverlapped" value="중복확인" class="btn btn-primary btn-outline-primary">
               </div>
               <div class="form-group">
                 <input type="password" name="patientPw" class="form-control" placeholder="Password를 입력해주세요.">
