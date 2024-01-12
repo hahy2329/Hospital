@@ -49,11 +49,25 @@ public class PatientController {
 	}
 	
 	@PostMapping("/register")
-	public ResponseEntity<Object> register(HttpServletRequest request, @ModelAttribute PatientDTO patientDTO) throws Exception{
+	public ResponseEntity<Object> register(HttpServletRequest request) throws Exception{
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-	
-		patientDTO.setPatientBirth(sdf.parse(request.getParameter("patientId")));
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date birthDt = sdf.parse(request.getParameter("patientBirth"));
+		
+		PatientDTO patientDTO = new PatientDTO();
+		
+		patientDTO.setPatientId(request.getParameter("patientId"));
+		patientDTO.setPatientPw(request.getParameter("patientPw"));
+		patientDTO.setPatientName(request.getParameter("patientName"));
+		patientDTO.setPatientBirth(birthDt);
+		patientDTO.setPatientEmail(request.getParameter("patientEmail"));
+		patientDTO.setPatientZipcode(request.getParameter("patientZipcode"));
+		patientDTO.setPatientRoadAddress(request.getParameter("patientRoadAddress"));
+		patientDTO.setPatientJibunAddress(request.getParameter("patientJibunAddress"));
+		patientDTO.setPatientNamujiAddress(request.getParameter("patientNamujiAddress"));
+		
+		
+		System.out.println(patientDTO.getPatientEmail());
 		
 		patientService.isertPatientInfo(patientDTO);
 		
@@ -67,4 +81,6 @@ public class PatientController {
 		
 		return new ResponseEntity<Object>(message, responseHeaders, HttpStatus.OK); 
 	}
+	
+	
 }

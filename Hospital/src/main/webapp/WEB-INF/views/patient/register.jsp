@@ -153,7 +153,7 @@
 		    </div>
 			<div class="row block-9">
 		          <div class="col-md-6 pr-md-5">
-		            <form action="${contextPath }/common/register" method="post">
+		            <form action="${contextPath }/patient/register" method="post">
 		              <div class="form-group">
 		                <input type="text" name="patientId" id="patientId" class="form-control" placeholder="ID를 입력해주세요.">
 		                <p class="answer"></p>

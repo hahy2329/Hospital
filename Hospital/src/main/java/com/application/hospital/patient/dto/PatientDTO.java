@@ -2,9 +2,16 @@ package com.application.hospital.patient.dto;
 
 import java.util.Date;
 
+import org.springframework.stereotype.Component;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@Component
+@NoArgsConstructor
+@AllArgsConstructor
 public class PatientDTO {
 	private String patientId;
 	private String patientPw;
