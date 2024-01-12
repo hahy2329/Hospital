@@ -1,8 +1,10 @@
 package com.application.hospital.patient.service;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.application.hospital.patient.dao.PatientDAO;
+import com.application.hospital.patient.dto.PatientDTO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -11,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 public class PatientServiceImpl implements PatientService {
 
 	private final PatientDAO patientDAO;
+	private final BCryptPasswordEncoder bcryptPasswordEncoder;
 	
 	@Override
 	public String duplicatedId(String patientId) throws Exception {
@@ -30,6 +33,14 @@ public class PatientServiceImpl implements PatientService {
 		}else {
 			return "notDuplicatedEmail";
 		}
+	}
+
+	@Override
+	public void isertPatientInfo(PatientDTO patientDTO) throws Exception {
+		patientDTO.setPatientPw(bcryptPasswordEncoder.encode(patientDTO.getPatientPw()));
+		
+		patientDAO.insertPatientInfo(patientDTO);
+		
 	}
 
 }

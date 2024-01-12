@@ -22,5 +22,23 @@
 			PATIENT_EMAIL = #{patientEmail}
 	
 	</select>
+	
+	<insert id="insertPatientInfo" parameterType="PatientDTO">
+		INSERT INTO PATIENT(PATIENT_ID, PATIENT_PW, PATIENT_NAME, PATIENT_BIRTH, PATIENT_EMAIL, PATIENT_ZIPCODE, PATIENT_ROAD_ADDRESS, PATIENT_JIBUN_ADDRESS, PATIENT_NAMUJI_ADDRESS)
+		
+		VALUES(
+			#{patientId},
+			#{patientPw},
+			#{patientName},
+			#{patientBirth},
+			#{patientEmail},
+			#{patientZipcode},
+			#{patientRoadAddress},
+			#{patientJibunAddress},
+			#{patientNamujiAddress}
+		)
+		
+		
+	</insert>
 
 </mapper>
