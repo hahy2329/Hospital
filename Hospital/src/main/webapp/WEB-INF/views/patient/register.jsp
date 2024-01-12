@@ -10,12 +10,12 @@
 	
 	var isValidId = false;
 	var special_pattern = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
+	var isValidEmail = false;
 	
 	var pattern1 = /[0-9]/;
 	var pattern2 = /[a-zA-Z]/;
 	var pattern3 = /[~!@\#$%<>^&*]/;
 	
-	var isValidEmail = false;
 	
 	$().ready(function(){
 		
@@ -89,7 +89,26 @@
 				}	
 			});
 		});
-		
+		$("form").submit(function(){
+			
+			if(isValidId == false){
+				alert("ID를 확인해 주세요.");
+				return false;
+			}
+			if(isValidEmail == false){
+				alert("Email을 확인해 주세요.");
+				return false;
+			}
+			if($("#patientPw").val() == ''){
+				alert("패스워드를 확인해 주세요.");
+				return false;
+			}
+			if(isValidId == true && isValidEmail == true){
+				if($("#patientPw").val() == )
+			}
+			
+			
+		});
 		
 		
 	});
@@ -125,7 +144,7 @@
 		                <input type="button" id="btnOverlapped" value="중복확인">
 		              </div>
 		              <div class="form-group">
-		                <input type="password" name="patientPw" class="form-control" placeholder="Password를 입력해주세요.">
+		                <input type="password" name="patientPw" id="patientPw" class="form-control" placeholder="Password를 입력해주세요.">
 		                <input type="password" id="confirmPasswd" placeholder="비밀번호를 다시 입력해주세요." class="form-control">
 		              </div>              
 		              <div class="form-group">
