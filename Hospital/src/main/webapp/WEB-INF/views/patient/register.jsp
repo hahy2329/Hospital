@@ -104,7 +104,23 @@
 				return false;
 			}
 			if(isValidId == true && isValidEmail == true){
-				if($("#patientPw").val() == )
+				if($("#patientPw").val() == $("#confirmPasswd").val()){
+					if(!pattern1.test($("#patientPw").val()) || !pattern2.test($("#patientPw").val()) || !pattern3.test($("#patientPw").val()) || $("#patientPw").val().length<8 || $("#patientPw").val().length>50){
+						
+						alert("영문+숫자+특수기호 8자리 이상으로 구성하여야 합니다.");
+						return false;
+						
+					}else{
+						$("[name='patientBirth']").val($("#birthY").val() + "-" + $("#birthM").val()+"-" + $("#birthD").val());
+						return true;
+					}
+				}else{
+					
+					alert("패스워드를 확인해 주세요.");
+					return false;
+					
+				}
+				
 			}
 			
 			
