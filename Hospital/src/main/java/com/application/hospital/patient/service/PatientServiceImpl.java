@@ -23,4 +23,13 @@ public class PatientServiceImpl implements PatientService {
 		}
 	}
 
+	@Override
+	public String duplicatedEmail(String patientEmail) throws Exception {
+		if(patientDAO.getDuplicatedEmail(patientEmail) == null) {
+			return "duplicateEmail";
+		}else {
+			return "notDuplicatedEmail";
+		}
+	}
+
 }
