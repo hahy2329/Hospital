@@ -40,5 +40,28 @@
 		
 		
 	</insert>
+	
+	<select id="getEncodedPassword" parameterType="String" resultType="String">
+	 	
+	 	SELECT
+	 		PATIENT_PW
+	 	FROM
+	 		PATIENT
+	 	WHERE
+	 		PATIENT_ID = #{loginId}
+	
+	
+	</select>
+	
+	<select id="getLoginInfo" parameterType="CommonLoginDTO" resultType="PatientDTO">
+	
+		SELECT
+			*
+		FROM
+			PATIENT
+		WHERE
+			PATIENT_ID = #{loginId}
+	
+	</select>
 
 </mapper>

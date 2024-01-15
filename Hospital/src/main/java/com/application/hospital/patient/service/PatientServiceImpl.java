@@ -3,6 +3,7 @@ package com.application.hospital.patient.service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.application.hospital.common.dto.CommonLoginDTO;
 import com.application.hospital.patient.dao.PatientDAO;
 import com.application.hospital.patient.dto.PatientDTO;
 
@@ -41,6 +42,18 @@ public class PatientServiceImpl implements PatientService {
 		
 		patientDAO.insertPatientInfo(patientDTO);
 		
+	}
+
+	@Override
+	public PatientDTO getLoginInfo(CommonLoginDTO commonLoginDTO) throws Exception {
+		
+		if(bcryptPasswordEncoder.matches(commonLoginDTO.getLoginPassword(), patientDAO.getEncodedPassword(commonLoginDTO.getLoginId()))) {
+			
+			return patientDAO.getLoginInfo(commonLoginDTO);
+			
+		}else {
+			return null;
+		}
 	}
 
 }
