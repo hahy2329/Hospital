@@ -9,5 +9,6 @@
 		<typeAliases>
 			<typeAlias type="com.application.hospital.patient.dto.PatientDTO" alias="PatientDTO" />
 			<typeAlias type="com.application.hospital.common.dto.CommonLoginDTO" alias="CommonLoginDTO"/>
+			<typeAlias type="com.application.hospital.medical.dto.MedicalDTO" alias="MedicalDTO"/>
 		</typeAliases>
 </configuration>
