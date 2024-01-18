@@ -39,6 +39,9 @@
             <p><span>Email:</span>abc@hospital.com</p>
           </div>
         </div>
+        <div class="col-md-12 mb-4">
+            <h1 class="h3">로그인</h1>
+        </div>
         <div class="row block-9">
           <div class="col-md-6 pr-md-5">
             <form action="${contextPath }/common/login" method="post">

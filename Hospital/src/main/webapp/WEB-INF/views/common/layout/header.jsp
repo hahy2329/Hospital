@@ -23,7 +23,7 @@
 	          <li class="nav-item"><a href="doctors.html" class="nav-link">Doctors</a></li>
 	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
 	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta"><a href="contact.html" class="nav-link" data-toggle="modal" data-target="#modalRequest"><span>Make an Appointment</span></a></li>
+	          <li class="nav-item cta"><a href="${contextPath }/common/login" class="nav-link"><span>로그인</span></a></li>
 	        </ul>
 	      </div>
 	    </div>
