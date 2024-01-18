@@ -10,6 +10,7 @@
 	
 	var isValidMedicalId = false;
 	var special_pattern = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
+	var isValidMedicalEmail = false;
 	
 	$().ready(function(){
 		
@@ -53,6 +54,37 @@
 				}	
 			});
 		});
+		$(document).on("click", "#btnOverlappedEmail", function(){
+			
+			$(".answerEmail").empty();
+			
+			var medicalEmail = $("#medicalEmail").val();
+			
+			if(medicalEmail == ''){
+				alert("Email을 입력해 주세요.");
+				$(".answerEmail").append("<p style='color: red;'>" + "Email을 입력해 주세요." + "</p>");
+				return;
+			}
+			
+			$.ajax({
+				
+				type : "get",
+				url : "${contextPath}/medical/checkDuplicatedEmail?medicalEmail=" + medicalEmail,
+				success : function(data){
+					if(data == "duplicateEmail"){
+						alert("사용할 수 있는 Email입니다.");
+						$(".answerEmail").append("<p style='color: green;'>" + "사용할 수 있는 Email입니다." + "</p>");
+						$("#btnOverlappedEmail").remove();
+						isValidMedicalEmail = true;
+					}else{
+						alert("사용할 수 없는 Email입니다.");
+						$(".answerEmail").append("<p style='color: red;'>" + "사용할 수 없는 Email입니다." + "</p>");
+						isValidMedicalEmail = false;
+					}
+				}	
+			});
+		});
+		
 		
 		
 		
@@ -90,11 +122,11 @@
 		                <input type="button" id="btnOverlapped" value="중복확인">
 		              </div>
 		              <div class="form-group">
-		                <input type="password" name="patientPw" id="patientPw" class="form-control" placeholder="Password를 입력해주세요.">
+		                <input type="password" name="medicalPw" id="medicalPw" class="form-control" placeholder="Password를 입력해주세요.">
 		                <input type="password" id="confirmPasswd" placeholder="비밀번호를 다시 입력해주세요." class="form-control">
 		              </div>              
 		              <div class="form-group">
-		                <input type="text" name="patientName" class="form-control" placeholder="이름을 입력해주세요.">
+		                <input type="text" name="medicalName" class="form-control" placeholder="이름을 입력해주세요.">
 		              </div>
 		              <div> 	
 		                <input type="text" class="form-control" value="생년월일을 선택해주세요." readonly="readonly">
@@ -133,9 +165,9 @@
 		                            </c:forEach>
 		                      </select>
 		                  </div>
-		                      <input type="hidden" name="patientBirth"/>
+		                      <input type="hidden" name="medicalBirth"/>
 		                <div> 	
-		                	<input type="email" class="form-control" id="patientEmail" name="patientEmail" placeholder="E-mail을 입력해주세요.">
+		                	<input type="email" class="form-control" id="medicalEmail" name="medicalEmail" placeholder="E-mail을 입력해주세요.">
 		              		<p class="answerEmail"></p>    
 		              		<input type="button" id="btnOverlappedEmail" value="중복확인">
 		              	</div>
