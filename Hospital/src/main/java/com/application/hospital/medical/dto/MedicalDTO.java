@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Component
 @NoArgsConstructor
 @AllArgsConstructor
-public class Medical {
+public class MedicalDTO {
 	
 	private String medicalId;
 	private String medicalPw;
