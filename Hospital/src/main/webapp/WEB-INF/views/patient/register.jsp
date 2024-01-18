@@ -48,7 +48,6 @@
 					if(data == "duplicate"){
 						alert("사용할 수 있는 ID입니다.");
 						$(".answer").append("<p style='color: green;'>" + "중복체크 완료" + "</p>");
-						$("#btnOverlapped").remove();
 						isValidId = true;
 					}else{
 						alert("사용할 수 없는 ID입니다.");
@@ -79,7 +78,6 @@
 					if(data == "duplicateEmail"){
 						alert("사용할 수 있는 Email입니다.");
 						$(".answerEmail").append("<p style='color: green;'>" + "사용할 수 있는 Email입니다." + "</p>");
-						$("#btnOverlappedEmail").remove();
 						isValidEmail = true;
 					}else{
 						alert("사용할 수 없는 Email입니다.");
@@ -155,16 +153,16 @@
 		          <div class="col-md-6 pr-md-5">
 		            <form action="${contextPath }/patient/register" method="post">
 		              <div class="form-group">
-		                <input type="text" name="patientId" id="patientId" class="form-control" placeholder="ID를 입력해주세요.">
+		                <input type="text" name="patientId" id="patientId" class="form-control" placeholder="ID를 입력해주세요." required="required">
 		                <p class="answer"></p>
 		                <input type="button" id="btnOverlapped" value="중복확인">
 		              </div>
 		              <div class="form-group">
-		                <input type="password" name="patientPw" id="patientPw" class="form-control" placeholder="Password를 입력해주세요.">
-		                <input type="password" id="confirmPasswd" placeholder="비밀번호를 다시 입력해주세요." class="form-control">
+		                <input type="password" name="patientPw" id="patientPw" class="form-control" placeholder="Password를 입력해주세요." required="required">
+		                <input type="password" id="confirmPasswd" placeholder="비밀번호를 다시 입력해주세요." class="form-control" required="required">
 		              </div>              
 		              <div class="form-group">
-		                <input type="text" name="patientName" class="form-control" placeholder="이름을 입력해주세요.">
+		                <input type="text" name="patientName" class="form-control" placeholder="이름을 입력해주세요." required="required">
 		              </div>
 		              <div> 	
 		                <input type="text" class="form-control" value="생년월일을 선택해주세요." readonly="readonly">
@@ -205,15 +203,15 @@
 		                  </div>
 		                      <input type="hidden" name="patientBirth"/>
 		                <div> 	
-		                	<input type="email" class="form-control" id="patientEmail" name="patientEmail" placeholder="E-mail을 입력해주세요.">
+		                	<input type="email" class="form-control" id="patientEmail" name="patientEmail" placeholder="E-mail을 입력해주세요." required="required">
 		              		<p class="answerEmail"></p>    
 		              		<input type="button" id="btnOverlappedEmail" value="중복확인">
 		              	</div>
 		              	<div>
-		              		<input type="text" id="patientZipcode" name="patientZipcode"  class="form-control" placeholder="우편번호">
+		              		<input type="text" id="patientZipcode" name="patientZipcode"  class="form-control" placeholder="우편번호" required="required">
 		              		<input type="button" value="검색" onclick="execDaumPostcode();" class="btn btn-primary btn-outline-primary"> 
-		              		<input type="text" id="patientRoadAddress" name="patientRoadAddress"  class="form-control" placeholder="도로명 주소">
-		              		<input type="text" id="patientJibunAddress" name="patientJibunAddress"  class="form-control" placeholder="지번 주소">
+		              		<input type="text" id="patientRoadAddress" name="patientRoadAddress"  class="form-control" placeholder="도로명 주소" required="required">
+		              		<input type="text" id="patientJibunAddress" name="patientJibunAddress"  class="form-control" placeholder="지번 주소" required="required">
 		              		<input type="text" id="patientNamujiAddress" name="patientNamujiAddress"  class="form-control" placeholder="나머지 주소">
 		              	</div>
 		              	    <br>

@@ -12,6 +12,15 @@
 	 	WHERE
 			MEDICAL_ID = #{medicalId}
 	</select>
-
+	
+	<select id="duplicatedEmail" parameterType="String" resultType="String">
+	
+	 	SELECT
+	 		MEDICAL_EMAIL
+	 	FROM
+	 		MEDICAL
+	 	WHERE
+			MEDICAL_EMAIL = #{medicalEmail}
+	</select>
 
 </mapper>

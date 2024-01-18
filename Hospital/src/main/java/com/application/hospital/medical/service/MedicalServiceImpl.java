@@ -21,6 +21,15 @@ public class MedicalServiceImpl implements MedicalService {
 			return "notDuplicate";
 		}	
 	}
+
+	@Override
+	public String duplicatedEmail(String medicalEmail) throws Exception {
+		if(medicalDAO.duplicatedEmail(medicalEmail) == null) {
+			return "duplicateEmail";
+		}else {
+			return "notDuplicateEmail";
+		}
+	}
 	
 	
 	

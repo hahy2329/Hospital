@@ -17,4 +17,9 @@ public class MedicalDAOImpl implements MedicalDAO {
 		return sqlSession.selectOne("medical.duplicatedId", medicalId);
 	}
 
+	@Override
+	public String duplicatedEmail(String medicalEmail) throws Exception {
+		return sqlSession.selectOne("medical.duplicatedEmail", medicalEmail);
+	}
+
 }

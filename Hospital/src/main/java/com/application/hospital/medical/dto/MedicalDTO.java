@@ -17,8 +17,8 @@ public class MedicalDTO {
 	private String medicalId;
 	private String medicalPw;
 	private String medicalName;
-	private String medicalBirth;
-	private Date medicalEmail;
+	private Date medicalBirth;
+	private String medicalEmail;
 	private String medicalZipcode;
 	private String medicalRoadAddress;
 	private String medicalJibunAddress;

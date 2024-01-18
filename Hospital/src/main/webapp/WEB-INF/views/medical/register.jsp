@@ -44,7 +44,6 @@
 					if(data == "duplicate"){
 						alert("사용할 수 있는 ID입니다.");
 						$(".answer").append("<p style='color: green;'>" + "중복체크 완료" + "</p>");
-						$("#btnOverlapped").remove();
 						isValidMedicalId = true;
 					}else{
 						alert("사용할 수 없는 ID입니다.");
@@ -74,7 +73,6 @@
 					if(data == "duplicateEmail"){
 						alert("사용할 수 있는 Email입니다.");
 						$(".answerEmail").append("<p style='color: green;'>" + "사용할 수 있는 Email입니다." + "</p>");
-						$("#btnOverlappedEmail").remove();
 						isValidMedicalEmail = true;
 					}else{
 						alert("사용할 수 없는 Email입니다.");

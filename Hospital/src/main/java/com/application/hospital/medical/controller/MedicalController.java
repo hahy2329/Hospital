@@ -35,5 +35,12 @@ public class MedicalController {
 		
 	}
 	
+	@GetMapping("/checkDuplicatedEmail")
+	public ResponseEntity<String> checkDuplicatedEmail(String medicalEmail) throws Exception{
+		
+		return new ResponseEntity<String>(medicalService.duplicatedEmail(medicalEmail), HttpStatus.OK);
+		
+	}
+	
 	
 }
