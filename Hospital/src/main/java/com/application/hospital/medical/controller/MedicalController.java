@@ -42,5 +42,12 @@ public class MedicalController {
 		
 	}
 	
+	@GetMapping("/checkDuplicatedCode")
+	public ResponseEntity<String> checkDuplicatedCode(String medicalCode) throws Exception{
+		
+		
+		
+	}
+	
 	
 }

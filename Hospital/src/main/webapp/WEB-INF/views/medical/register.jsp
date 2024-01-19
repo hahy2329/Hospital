@@ -10,7 +10,10 @@
 	
 	var isValidMedicalId = false;
 	var special_pattern = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
+	
 	var isValidMedicalEmail = false;
+	var isValidMedicalCode = false;
+	
 	
 	$().ready(function(){
 		
@@ -81,6 +84,38 @@
 					}
 				}	
 			});
+		});
+		
+		$(document).on("click", "#btnOverlappedCode", function(){
+			
+			$(".answerCode").empty();
+			
+			var medicalCode = $("#medicalCode").val();
+			
+			if(medicalCode == ''){
+				alert("코드값을 입력해주세요.");
+				$(".answerCode").append("<p style='color: red;'>" + "코드 값을 입력해주세요." +"</p>");
+				return;.
+			}
+			
+			$.ajax({
+				
+				type : "get",
+				url : "${contextPath}/medical/checkDuplicatedCode?medicalCode=" + medicalCode,
+				success : function(data){
+					if(data == "duplicateCode"){
+						alert("사용할 수 있는 코드값 입니다.");
+						$(".answerCode").append("<p style='color: green;'>" + "사용할 수 있는 코드값 입니다." +"</p>");
+						isValidMedicalCode = true;
+					}else{
+						alert("코드값을 확인해주세요.");
+						$(".answerCode").append("<p style='color: red;'>" + "코드값을 확인해 주세요." + "</p>");
+						isValidMedicalCode = false;
+					}
+				} 
+				
+			});
+			
 		});
 		
 		
