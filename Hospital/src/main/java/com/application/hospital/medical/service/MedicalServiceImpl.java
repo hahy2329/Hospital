@@ -3,6 +3,7 @@ package com.application.hospital.medical.service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.application.hospital.common.dto.CommonLoginDTO;
 import com.application.hospital.medical.dao.MedicalDAO;
 import com.application.hospital.medical.dto.MedicalDTO;
 
@@ -60,6 +61,23 @@ public class MedicalServiceImpl implements MedicalService {
 		
 		medicalDAO.insertMedicalInfo(medicalDTO);
 		
+		
+	}
+
+	@Override
+	public MedicalDTO getLoginInfo(CommonLoginDTO commonLoginDTO) throws Exception {
+		
+		if(medicalDAO.getLoginIdInfo(commonLoginDTO.getLoginId()) != null) {
+			if(bcryptPasswordEncoder.matches(commonLoginDTO.getLoginPassword(), medicalDAO.getLoginIdInfo(commonLoginDTO.getLoginId()))) {
+				
+				return medicalDAO.getLoginInfo(commonLoginDTO);
+			}else {
+				
+				return null;
+			}
+		}else {
+			return null;
+		}
 		
 	}
 	

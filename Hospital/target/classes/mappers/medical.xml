@@ -61,5 +61,27 @@
 		
 		)
 	</insert>
+	
+	<select id="getLoginIdInfo" parameterType="String" resultType="String">
+	
+		SELECT
+			MEDICAL_PW
+		FROM
+			MEDICAL
+		WHERE
+			MEDICAL_ID = #{loginId}
+	
+	</select>
+	
+	<select id="getLoginInfo" parameterType="CommonLoginDTO" resultType="MedicalDTO">
+		
+		SELECT
+			*
+		FROM
+			MEDICAL
+		WHERE
+			MEDICAL_ID = #{loginId}
+	
+	</select>
 
 </mapper>
