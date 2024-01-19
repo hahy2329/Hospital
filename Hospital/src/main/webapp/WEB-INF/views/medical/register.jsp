@@ -14,6 +14,9 @@
 	var isValidMedicalEmail = false;
 	var isValidMedicalCode = false;
 	
+	var pattern1 = /[0-9]/;
+	var pattern2 = /[a-zA-Z]/;
+	var pattern3 = /[~!@\#$%<>^&*]/;
 	
 	$().ready(function(){
 		
@@ -26,6 +29,11 @@
 			if(medicalId == ''){
 				alert("ID를 입력하세요.");
 				$(".answer").append("<p style='color: red;'>" + "ID를 입력해 주세요." + "</p>");
+				return;
+			}
+			if(medicalId.length < 6 || medicalId.length > 15){
+				alert("6자리 이상 15자리 미만으로 입력해주세요.");
+				$(".answer").append("<p style='color: red;'>" + "6자리 이상 15자리 미만으로 입력해주세요." + "</p>");
 				return;
 			}
 			if(medicalId.search(/\s/) != -1){
@@ -246,7 +254,7 @@
 		              		<input type="button" value="검색" onclick="execDaumPostMedicalcode();" class="btn btn-primary btn-outline-primary"> 
 		              		<input type="text" id="medicalRoadAddress" name="medicalRoadAddress"  class="form-control" placeholder="도로명 주소" required="required">
 		              		<input type="text" id="medicalJibunAddress" name="medicalJibunAddress"  class="form-control" placeholder="지번 주소" required="required">
-		              		<input type="text" id="medicalNamujiAddress" name="medicalNamujiAddress"  class="form-control" placeholder="나머지 주소" required="required">
+		              		<input type="text" id="medicalNamujiAddress" name="medicalNamujiAddress"  class="form-control" placeholder="나머지 주소">
 		              	</div>
 		              	<div class="form-group">
 			                <input type="text" name="medicalCode" id="medicalCode" class="form-control" placeholder="의료진 인증 코드를 입력해주세요." required="required">
