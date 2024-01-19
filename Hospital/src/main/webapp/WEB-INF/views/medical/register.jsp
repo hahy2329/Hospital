@@ -95,7 +95,7 @@
 			if(medicalCode == ''){
 				alert("코드값을 입력해주세요.");
 				$(".answerCode").append("<p style='color: red;'>" + "코드 값을 입력해주세요." +"</p>");
-				return;.
+				return;
 			}
 			
 			$.ajax({
@@ -118,8 +118,45 @@
 			
 		});
 		
-		
-		
+		$("form").submit(function(){
+			
+			if(isValidMedicalId == false){
+				alert("ID를 확인해 주세요.");
+				return false;
+			}
+			if(isValidMedicalEmail == false){
+				alert("Email을 확인해 주세요.");
+				return false;
+			}
+			if(isValidMedicalCode == false){
+				alert("코드값을 확인해 주세요.");
+				return false;
+			}
+			if($("#medicalPw").val() == ''){
+				alert("패스워드를 확인해 주세요.");
+				return false;
+			}
+			
+			if(isValidMedicalId == true && isValidMedicalEmail == true && isValidMedicalCode == true){
+				if($("#medicalPw").val() == $("#confirmPasswd").val()){
+					if(!pattern1.test($("#medicalPw").val()) || !pattern2.test($("#medicalPw").val()) || !pattern3.test($("#medicalPw").val()) || $("#medicalPw").val().length<8 || $("#medicalPw").val().length>50){
+						
+						alert("영문+숫자+특수기호 8자리 이상으로 구성하여야 합니다.");
+						return false;
+						
+					}else{
+						
+						$("[name='medicalBirth']").val($("#birthY").val() + "-" + $("#birthM").val()+"-" + $("#birthD").val());
+						return true;
+					}
+				}else{
+					alert("패스워드를 확인해 주세요.");
+					return false;
+				}
+			}
+			
+			
+		});
 		
 		
 	});
@@ -150,7 +187,7 @@
 		          <div class="col-md-6 pr-md-5">
 		            <form action="${contextPath }/medical/register" method="post">
 		              <div class="form-group">
-		                <input type="text" name="medicalId" id="medicalId" class="form-control" placeholder="ID를 입력해주세요." required="required">
+		                <input type="text" name="medicalId" id="medicalId" class="form-control" minlength="6" maxlength="12" placeholder="ID를 입력해주세요." required="required">
 		                <p class="answer"></p>
 		                <input type="button" id="btnOverlapped" value="중복확인">
 		              </div>

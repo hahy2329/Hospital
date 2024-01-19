@@ -1,8 +1,10 @@
 package com.application.hospital.medical.service;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.application.hospital.medical.dao.MedicalDAO;
+import com.application.hospital.medical.dto.MedicalDTO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -11,6 +13,8 @@ import lombok.RequiredArgsConstructor;
 public class MedicalServiceImpl implements MedicalService {
 	
 	private final MedicalDAO medicalDAO;
+	
+	private final BCryptPasswordEncoder bcryptPasswordEncoder;
 
 	@Override
 	public String duplicatedId(String medicalId) throws Exception {
@@ -47,6 +51,16 @@ public class MedicalServiceImpl implements MedicalService {
 			
 			return "beInUse";
 		}
+	}
+
+	@Override
+	public void insertMedicalInfo(MedicalDTO medicalDTO) throws Exception {
+		
+		medicalDTO.setMedicalPw(bcryptPasswordEncoder.encode(medicalDTO.getMedicalPw()));
+		
+		medicalDAO.insertMedicalInfo(medicalDTO);
+		
+		
 	}
 	
 	

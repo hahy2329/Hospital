@@ -3,6 +3,8 @@ package com.application.hospital.medical.dao;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.application.hospital.medical.dto.MedicalDTO;
+
 import lombok.RequiredArgsConstructor;
 
 @Repository
@@ -30,6 +32,12 @@ public class MedicalDAOImpl implements MedicalDAO {
 	@Override
 	public String duplicatedCode(String medicalCode) throws Exception {
 		return sqlSession.selectOne("medical.duplicatedCode", medicalCode);
+	}
+
+	@Override
+	public void insertMedicalInfo(MedicalDTO medicalDTO) throws Exception {
+		sqlSession.insert("medical.insertMedicalInfo", medicalDTO);
+		
 	}
 
 }

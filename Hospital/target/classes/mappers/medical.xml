@@ -42,5 +42,24 @@
 		WHERE
 			AUTHENTICATION = #{medicalCode}
 	</select>
+	
+	<insert id="insertMedicalInfo" parameterType="MedicalDTO">
+		
+		INSERT INTO MEDICAL(MEDICAL_ID, MEDICAL_PW, MEDICAL_NAME, MEDICAL_BIRTH, MEDICAL_EMAIL, MEDICAL_ZIPCODE, MEDICAL_ROAD_ADDRESS, MEDICAL_JIBUN_ADDRESS, MEDICAL_NAMUJI_ADDRESS, MEDICAL_CODE)
+		
+		VALUES(
+			#{medicalId},
+			#{medicalPw},
+			#{medicalName},
+			#{medicalBirth},
+			#{medicalEmail},
+			#{medicalZipcode},
+			#{medicalRoadAddress},
+			#{medicalJibunAddress},
+			#{medicalNamujiAddress},
+			#{medicalCode}
+		
+		)
+	</insert>
 
 </mapper>
