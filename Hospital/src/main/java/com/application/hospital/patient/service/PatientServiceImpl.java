@@ -20,19 +20,19 @@ public class PatientServiceImpl implements PatientService {
 	public String duplicatedId(String patientId) throws Exception {
 		if(patientDAO.getDuplicatedId(patientId)!= null) {
 			
-			return "notDuplicate";
+			return "duplicate";
 			
 		}else {
-			return "duplicate";
+			return "notDuplicate";
 		}
 	}
 
 	@Override
 	public String duplicatedEmail(String patientEmail) throws Exception {
 		if(patientDAO.getDuplicatedEmail(patientEmail) == null) {
-			return "duplicateEmail";
+			return "notDuplicateEmail";
 		}else {
-			return "notDuplicatedEmail";
+			return "duplicateEmail";
 		}
 	}
 

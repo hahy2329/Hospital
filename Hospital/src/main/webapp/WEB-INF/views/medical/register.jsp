@@ -32,8 +32,8 @@
 				return;
 			}
 			if(medicalId.length < 6 || medicalId.length > 15){
-				alert("6자리 이상 15자리 미만으로 입력해주세요.");
-				$(".answer").append("<p style='color: red;'>" + "6자리 이상 15자리 미만으로 입력해주세요." + "</p>");
+				alert("6자리 이상 15자리 이하로 입력해 주세요.");
+				$(".answer").append("<p style='color: red;'>" + "6자리 이상 15자리 이하로 입력해주세요." + "</p>");
 				return;
 			}
 			if(medicalId.search(/\s/) != -1){
@@ -195,7 +195,7 @@
 		          <div class="col-md-6 pr-md-5">
 		            <form action="${contextPath }/medical/register" method="post">
 		              <div class="form-group">
-		                <input type="text" name="medicalId" id="medicalId" class="form-control" minlength="6" maxlength="12" placeholder="ID를 입력해주세요." required="required">
+		                <input type="text" name="medicalId" id="medicalId" class="form-control" minlength="6" maxlength="15" placeholder="ID를 입력해주세요." required="required">
 		                <p class="answer"></p>
 		                <input type="button" id="btnOverlapped" value="중복확인">
 		              </div>

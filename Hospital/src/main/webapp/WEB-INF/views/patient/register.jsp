@@ -30,6 +30,11 @@
 				$(".answer").append("<p style='color: red;'>" + "ID를 입력해 주세요." + "</p>");
 				return;
 			}
+			if(patientId.length < 6 || patientId.length > 15){
+				alert("6자리 이상 15자리 이하로 입력해 주세요.");
+				$(".answer").append("<p style='color: red;'>" + "6자리 이상 15자리 이하로 입력해 주세요." + "</p>");
+				return;
+			}
 			if(patientId.search(/\s/) != -1){
 				alert("공백은 허용할 수 없습니다.");
 				$(".answer").append("<p style='color: red;'>" + "공백은 허용할 수 없습니다." + "</p>");
@@ -45,7 +50,7 @@
 				type : "get",
 				url : "${contextPath}/patient/checkDuplicatedId?patientId=" + patientId,
 				success : function(data){
-					if(data == "duplicate"){
+					if(data == "notDuplicate"){
 						alert("사용할 수 있는 ID입니다.");
 						$(".answer").append("<p style='color: green;'>" + "중복체크 완료" + "</p>");
 						isValidId = true;
@@ -75,7 +80,7 @@
 				type : "get",
 				url : "${contextPath}/patient/checkDuplicatedEmail?patientEmail" + patientEmail,
 				success : function(data){
-					if(data == "duplicateEmail"){
+					if(data == "notDuplicateEmail"){
 						alert("사용할 수 있는 Email입니다.");
 						$(".answerEmail").append("<p style='color: green;'>" + "사용할 수 있는 Email입니다." + "</p>");
 						isValidEmail = true;
@@ -153,7 +158,7 @@
 		          <div class="col-md-6 pr-md-5">
 		            <form action="${contextPath }/patient/register" method="post">
 		              <div class="form-group">
-		                <input type="text" name="patientId" id="patientId" class="form-control" placeholder="ID를 입력해주세요." required="required">
+		                <input type="text" name="patientId" id="patientId" class="form-control" minlength="6" maxlength="15" placeholder="ID를 입력해주세요." required="required">
 		                <p class="answer"></p>
 		                <input type="button" id="btnOverlapped" value="중복확인">
 		              </div>
