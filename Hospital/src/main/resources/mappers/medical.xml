@@ -22,5 +22,25 @@
 	 	WHERE
 			MEDICAL_EMAIL = #{medicalEmail}
 	</select>
+	
+	<select id="checkDuplicatedId" parameterType="String" resultType="String">
+	
+		SELECT 
+			MEDICAL_ID
+		FROM
+			MEDICAL
+		WHERE
+			MEDICAL_CODE = #{medicalCode}
+	</select>
+	
+	<select id="duplicatedCode" parameterType="String" resultType="String">
+	
+		SELECT
+			AUTHENTICATION
+		FROM
+			AUTHENTICATION
+		WHERE
+			AUTHENTICATION = #{medicalCode}
+	</select>
 
 </mapper>

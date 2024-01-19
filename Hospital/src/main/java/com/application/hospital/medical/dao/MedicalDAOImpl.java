@@ -22,4 +22,14 @@ public class MedicalDAOImpl implements MedicalDAO {
 		return sqlSession.selectOne("medical.duplicatedEmail", medicalEmail);
 	}
 
+	@Override
+	public String checkDuplicatedId(String medicalCode) throws Exception {
+		return sqlSession.selectOne("medical.checkDuplicatedId", medicalCode);
+	}
+
+	@Override
+	public String duplicatedCode(String medicalCode) throws Exception {
+		return sqlSession.selectOne("medical.duplicatedCode", medicalCode);
+	}
+
 }

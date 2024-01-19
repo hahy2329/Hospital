@@ -16,18 +16,36 @@ public class MedicalServiceImpl implements MedicalService {
 	public String duplicatedId(String medicalId) throws Exception {
 		
 		if(medicalDAO.duplicatedId(medicalId) == null) {
-			return "duplicate";
-		}else {
 			return "notDuplicate";
+		}else {
+			return "duplicate";
 		}	
 	}
 
 	@Override
 	public String duplicatedEmail(String medicalEmail) throws Exception {
+		
 		if(medicalDAO.duplicatedEmail(medicalEmail) == null) {
-			return "duplicateEmail";
-		}else {
 			return "notDuplicateEmail";
+		}else {
+			return "duplicateEmail";
+		}
+	}
+
+	@Override
+	public String duplicatedCode(String medicalCode) throws Exception {
+		
+		if(medicalDAO.checkDuplicatedId(medicalCode) == null) {
+			if(medicalDAO.duplicatedCode(medicalCode) != null) {
+				
+				return "checkOkCode";
+			}else {
+				
+				return "notExist";
+			}
+		}else {
+			
+			return "beInUse";
 		}
 	}
 	
