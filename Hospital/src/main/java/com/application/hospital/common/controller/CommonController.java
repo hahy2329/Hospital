@@ -97,9 +97,12 @@ public class CommonController {
 			
 			return new ResponseEntity<Object>(message, responHeaders, HttpStatus.OK);
 		}
-		
-		
-		
-		
+	}
+	
+	@GetMapping("/introduce")
+	public ModelAndView introduce() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/common/introduce");
+		return mv;
 	}
 }

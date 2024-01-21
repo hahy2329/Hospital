@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -80,6 +81,23 @@ public class PatientController {
 		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
 		
 		return new ResponseEntity<Object>(message, responseHeaders, HttpStatus.OK); 
+	}
+	
+	@GetMapping("logout")
+	public ResponseEntity<Object> logout(HttpServletRequest request) throws Exception{
+		
+		HttpSession session = request.getSession();
+		session.invalidate();
+		
+		HttpHeaders responHeaders = new HttpHeaders();
+		responHeaders.add("Content-Type", "text/html; charset=utf-8");
+		
+		String message = "<script>";
+		message +="alert('정상적으로 로그아웃 되었습니다.');";
+		message +="location.href='" + request.getContextPath() + "/';";
+		message +="</script>";
+		
+		return new ResponseEntity<Object>(message, responHeaders, HttpStatus.OK);
 	}
 	
 	
