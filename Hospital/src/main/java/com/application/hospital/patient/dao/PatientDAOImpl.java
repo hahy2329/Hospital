@@ -40,5 +40,10 @@ public class PatientDAOImpl implements PatientDAO {
 		return sqlSession.selectOne("patient.getLoginInfo", commonLoginDTO);
 	}
 
+	@Override
+	public String getLoginIdInfo(String loginId) throws Exception {
+		return sqlSession.selectOne("patient.getLoginIdInfo", loginId);
+	}
+
 
 }

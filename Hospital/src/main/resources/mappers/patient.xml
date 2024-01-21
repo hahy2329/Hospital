@@ -63,5 +63,15 @@
 			PATIENT_ID = #{loginId}
 	
 	</select>
+	
+	<select id="getLoginIdInfo" parameterType="String" resultType="String">
+		
+		SELECT
+			PATIENT_PW
+		FROM
+			PATIENT
+		WHERE
+			PATIENT_ID = #{loginId}
+	</select>
 
 </mapper>

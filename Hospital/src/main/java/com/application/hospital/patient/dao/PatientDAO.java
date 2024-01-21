@@ -9,5 +9,7 @@ public interface PatientDAO {
 	public String getDuplicatedEmail(String patientEmail) throws Exception;
 	public void insertPatientInfo(PatientDTO patientDTO) throws Exception;
 	public String getEncodedPassword(String loginId) throws Exception;
+	public String getLoginIdInfo(String loginId) throws Exception;
 	public PatientDTO getLoginInfo(CommonLoginDTO commonLoginDTO) throws Exception;
+	
 }

@@ -47,10 +47,14 @@ public class PatientServiceImpl implements PatientService {
 	@Override
 	public PatientDTO getLoginInfo(CommonLoginDTO commonLoginDTO) throws Exception {
 		
-		if(bcryptPasswordEncoder.matches(commonLoginDTO.getLoginPassword(), patientDAO.getEncodedPassword(commonLoginDTO.getLoginId()))) {
-			
-			return patientDAO.getLoginInfo(commonLoginDTO);
-			
+		
+		if(patientDAO.getLoginIdInfo(commonLoginDTO.getLoginId()) != null) {
+			if(bcryptPasswordEncoder.matches(commonLoginDTO.getLoginPassword(), patientDAO.getEncodedPassword(commonLoginDTO.getLoginId()))) {
+				
+				return patientDAO.getLoginInfo(commonLoginDTO);		
+			}else {
+				return null;
+			}
 		}else {
 			return null;
 		}

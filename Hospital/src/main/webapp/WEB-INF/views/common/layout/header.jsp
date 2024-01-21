@@ -17,13 +17,30 @@
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	          <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-	          <li class="nav-item"><a href="doctors.html" class="nav-link">Doctors</a></li>
-	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta"><a href="${contextPath }/common/login" class="nav-link"><span>로그인</span></a></li>
+		          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+		          <li class="nav-item"><a href="about.html" class="nav-link">병원 소개</a></li>
+				<c:if test="${sessionScope.patientId ne null }">		          
+		          <li class="nav-item"><a href="services.html" class="nav-link">환자의 목소리</a></li> 
+		          <li class="nav-item"><a href="doctors.html" class="nav-link">진료 예약</a></li>
+		          <li class="nav-item"><a href="blog.html" class="nav-link">의료진 찾기</a></li>
+		        </c:if>
+		        <c:if test="${sessionScope.medicalId ne null }">  
+		          <li class="nav-item"><a href="contact.html" class="nav-link">환자의 목소리</a></li>
+		          <li class="nav-item"><a href="contact.html" class="nav-link">예약 관리</a></li>
+		          <li class="nav-item"><a href="contact.html" class="nav-link">출퇴근 도장</a></li>
+		          <li class="nav-item"><a href="contact.html" class="nav-link">출퇴근 관리</a></li>
+	        	</c:if>
+	        	<c:choose>
+		        	<c:when test="${sessionScope.patientId eq null and sessionScope.medicalId eq null }">
+			          <li class="nav-item cta"><a href="${contextPath }/common/login" class="nav-link"><span>로그인</span></a></li>
+		        	</c:when>
+		        	<c:otherwise>
+					  <c:if test="${sessionScope.patientId ne null }">
+					  		<li class="nav-item cta"><a href="#" class="nav-link"><span>${sessionScope.patientName }님 환영해요.</span></a></li>  
+					  		<li class="nav-item cta"><a href="${contextPath }/patient/logout" class="nav-link"><span>로그아웃</span></a></li>
+					  </c:if> 		        	
+		        	</c:otherwise>
+		        </c:choose>	
 	        </ul>
 	      </div>
 	    </div>
