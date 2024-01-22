@@ -83,7 +83,7 @@ public class PatientController {
 		return new ResponseEntity<Object>(message, responseHeaders, HttpStatus.OK); 
 	}
 	
-	@GetMapping("logout")
+	@GetMapping("/logout")
 	public ResponseEntity<Object> logout(HttpServletRequest request) throws Exception{
 		
 		HttpSession session = request.getSession();
@@ -98,6 +98,11 @@ public class PatientController {
 		message +="</script>";
 		
 		return new ResponseEntity<Object>(message, responHeaders, HttpStatus.OK);
+	}
+	
+	@GetMapping("/board")
+	public ModelAndView board() throws Exception{
+		
 	}
 	
 	
