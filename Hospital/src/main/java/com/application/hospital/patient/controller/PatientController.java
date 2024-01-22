@@ -2,6 +2,8 @@ package com.application.hospital.patient.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -100,10 +102,6 @@ public class PatientController {
 		return new ResponseEntity<Object>(message, responHeaders, HttpStatus.OK);
 	}
 	
-	@GetMapping("/board")
-	public ModelAndView board() throws Exception{
-		
-	}
 	
 	
 }

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="complimentBoard">
+
+	<select id="getAllComplimentBoardCnt" parameterType="hashmap" resultType="int">
+		<choose>
+			<when test='searchKeyword.equals("total")'>
+				<choose>
+					<when test='searchWord.equals("")'>
+						SELECT
+							COUNT(*)
+						FROM
+							COMPLIMENTBOARD
+					</when>
+					<otherwise>
+						SELECT
+							COUNT(*)
+						FROM
+							COMPLIMENTBOARD
+						WHERE
+							PATIENT_ID LIKE CONCAT('%', #{searchWord}, '%') OR
+							COMPLIMENT_BOARD_SUBJECT LIKE CONCAT('%', #{searchWord}, '%') OR
+							COMPLIMENT_BOARD_CONTENT LIKE CONCAT('%', #{searchWord}, '%')
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				SELECT
+					COUNT(*)
+				FROM
+					COMPLIMENTBOARD
+				WHERE
+					<if test='searchKeyword.equals("patientId")'>
+						PATIENT_ID LIKE CONCAT('%', #{searchWord}, '%')
+					</if>
+					<if test='searchKeyword.equals("complimentBoardSubject")'>
+						COMPLIMENT_BOARD_SUBJECT LIKE CONCAT('%', #{searchWord}, '%')
+					</if>
+					<if test='searchKeyword.equals("complimentBoardContent")'>
+						COMPLIMENT_BOARD_CONTENT LIKE CONCAT('%', #{searchWord}, '%')
+					</if>
+			</otherwise>
+		</choose>	
+	</select>
+	
+	<select id="getComplimentBoardList" parameterType="hashmap" resultType="ComplimentBoardDTO">
+		<choose>
+			<when test='searchKeyword.equals("total")'>
+				<choose>
+					<when test='searchWord.equals("")'>
+						SELECT
+							*
+						FROM
+							COMPLIMENTBOARD
+						ORDER BY 
+							COMPLIMENT_BOARD_ENROLL_DT DESC
+						LIMIT
+							#{startBoardIdx}, #{onePageViewCnt}
+					</when>
+					<otherwise>
+						SELECT
+							*
+						FROM
+							COMPLIMENTBOARD
+						WHERE
+							PATIENT_ID LIKE CONCAT('%', #{searchWord}, '%') OR
+							COMPLIMENT_BOARD_SUBJECT LIKE CONCAT('%', #{searchWord}, '%') OR
+							COMPLIMENT_BOARD_CONTENT LIKE CONCAT('%', #{searchWord}, '%')
+						ORDER BY
+							COMPLIMENT_BOARD_ENROLL_DT DESC
+						LIMIT
+							#{startBoardIdx}, #{onePageViewCnt}
+					</otherwise>
+				</choose>
+			</when>		
+			<otherwise>
+				SELECT
+					*
+				FROM
+					COMPLIMENTBOARD
+				WHERE
+					<if test='searchKeyword.equals("patientId")'>
+						PATIENT_ID LIKE CONCAT('%', #{searchWord}, '%')
+					</if>
+					<if test='searchKeyword.equals("complimentBoardSubject")'>
+						COMPLIMENT_BOARD_SUBJECT LIKE CONCAT('%', #{searchWord}, '%')
+					</if>
+					<if test='searchKeyword.equals("complimentBoardContent")'>
+						COMPLIMENT_BOARD_CONTENT LIKE CONCAT('%', #{searchWord}, '%')
+					</if>
+				ORDER BY
+					COMPLIMENT_BOARD_ENROLL_DT DESC
+				LIMIT
+					#{startBoardIdx}, #{onePageViewCnt}
+			</otherwise>
+		</choose>
+	</select>
+	
+	
+	
+</mapper>

@@ -3,6 +3,9 @@ package com.application.hospital.common.controller;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.application.hospital.common.dto.CommonLoginDTO;
+import com.application.hospital.common.service.CommonService;
 import com.application.hospital.medical.dto.MedicalDTO;
 import com.application.hospital.medical.service.MedicalService;
 import com.application.hospital.patient.dto.PatientDTO;
@@ -31,6 +35,7 @@ public class CommonController {
 	
 	private final PatientService patientService;
 	private final MedicalService medicalService;
+	private final CommonService commonService;
 	
 	@GetMapping("/login")
 	public ModelAndView login() throws Exception{
@@ -105,4 +110,73 @@ public class CommonController {
 		mv.setViewName("/common/introduce");
 		return mv;
 	}
+	
+	@GetMapping("/complimentBoard")
+	public ModelAndView complimentBoard(HttpServletRequest request) throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/patient/complimentBoard");
+		
+		String searchKeyword = request.getParameter("searchKeyword");
+		if(searchKeyword == null) searchKeyword = "total";
+		
+		String searchWord = request.getParameter("searchWord");
+		if(searchWord == null) searchWord = "";
+		
+		int onePageViewCnt = 10;
+		
+		if(request.getParameter("onePageViewCnt") != null) {
+			onePageViewCnt = Integer.parseInt(request.getParameter("onePageViewCnt"));
+		}
+		
+		String temp = request.getParameter("currentPageNumber");
+		if(temp == null) {
+			temp = "1";
+		}
+		
+		int currentPageNumber = Integer.parseInt(temp);
+		
+		Map<String, String> searchCntMap = new HashMap<String, String>();
+		searchCntMap.put("searchKeyword", searchKeyword);
+		searchCntMap.put("searchWord", searchWord);
+		
+		int allBoardCnt = commonService.getAllComplimentBoardCnt(searchCntMap);
+		
+		int allPageCnt = allBoardCnt / onePageViewCnt +1;
+		
+		if(allBoardCnt % onePageViewCnt == 0) allPageCnt--;
+		
+		int startPage = (currentPageNumber - 1) / 10 * 10 + 1;
+		
+		if(startPage == 0) {
+			startPage = 1;
+		}
+		
+		int endPage = startPage + 9;
+		
+		if(endPage > allPageCnt) endPage = allPageCnt;
+		
+		int startBoardIdx = (currentPageNumber - 1) * onePageViewCnt;
+		
+		mv.addObject("startPage", startPage); //스타트 페이지
+		mv.addObject("endPage", endPage); //끝 페이지
+		mv.addObject("allBoardCnt", allBoardCnt); // 전체 검색 결과 갯수 
+		mv.addObject("allPageCnt", allPageCnt); // 전체 페이지 수 
+		mv.addObject("onePageViewCnt", onePageViewCnt); //한 페이지에 보여질 갯수 
+		mv.addObject("currentPageNumber", currentPageNumber); //현재 페이지  
+		mv.addObject("startBoardIdx", startBoardIdx); //각 게시글에 주어지는 일련번호
+		mv.addObject("searchKeyword", searchKeyword); //검색 범위
+		mv.addObject("searchWord",searchWord); // 검색 키워드
+		
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		searchMap.put("onePageViewCnt", onePageViewCnt);
+		searchMap.put("startBoardIdx", startBoardIdx);
+		searchMap.put("searchKeyword", searchKeyword);
+		searchMap.put("searchWord", searchWord);
+		mv.addObject("complimentBoardList", commonService.getComplimentBoardList(searchMap));
+		
+		return mv;
+		
+	}
+	
 }

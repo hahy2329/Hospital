@@ -1,4 +1,4 @@
-package com.application.hospital.patient.dto;
+package com.application.hospital.common.dto;
 
 import java.util.Date;
 

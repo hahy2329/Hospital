@@ -22,7 +22,7 @@
 				<c:if test="${sessionScope.patientId ne null }">		          
 		          <li class="nav-item"><a href="services.html" class="nav-link">진료 예약</a></li>
 		          <li class="nav-item"><a href="services.html" class="nav-link">의료진 정보</a></li>
-		          <li class="nav-item"><a href="${contextPath }/patient/board" class="nav-link">불편/민원 접수</a></li>
+		          <li class="nav-item"><a href="${contextPath }/common/complimentBoard" class="nav-link">불편/민원 접수</a></li>
 		          <li class="nav-item"><a href="services.html" class="nav-link">직원을 칭찬합니다.</a></li>
 		        </c:if>
 		        <c:if test="${sessionScope.medicalId ne null }">  
