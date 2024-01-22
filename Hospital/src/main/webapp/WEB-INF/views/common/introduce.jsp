@@ -81,16 +81,16 @@
       		<div class="col-md-6 d-flex">
       			<div class="about-wrap">
       				<div class="heading-section heading-section-white mb-5 ftco-animate">
-		            <h2 class="mb-2">Dentacare with a personal touch</h2>
-		            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+		            <h2 class="mb-2">FrontToBack은 아래와 같은 진료로 진행됩니다.</h2>
+		            <p>신경외과, 정형외과, 소아청소년과가 대표적이며, 그 외 다양한 진료를 받고 있습니다.</p>
 		          </div>
       				<div class="list-services d-flex ftco-animate">
       					<div class="icon d-flex justify-content-center align-items-center">
       						<span class="icon-check2"></span>
       					</div>
       					<div class="text">
-	      					<h3>Well Experience Dentist</h3>
-	      					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+	      					<h3>신경외과</h3>
+	      					<p>FrontToBack병원 신경외과는 신경계통에서 발생하는 질환을 진단하고 수술적으로 치료합니다. 신경계는 중추 신경계와 말초 신경계로 나뉘는데, 중추 신경계는 뇌와 척수로 구성, 말초 신경계는 뇌와 척수에서 시작해 각각의 장기 및 근육 그리고 피부 등으로 향하는 신경을 통칭하여 말합니다.</p>
       					</div>
       				</div>
       				<div class="list-services d-flex ftco-animate">
@@ -98,8 +98,8 @@
       						<span class="icon-check2"></span>
       					</div>
       					<div class="text">
-	      					<h3>High Technology Facilities</h3>
-	      					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+	      					<h3>정형외과</h3>
+	      					<p>FrontToBack병원 정형외과는 척추질환, 고관절, 무릎, 어깨, 및 팔꿈치 질환, 족부 질환, 수부질환, 소아 등 세부적인 전문진료를 진행하고 있습니다.</p>
       					</div>
       				</div>
       				<div class="list-services d-flex ftco-animate">
@@ -107,8 +107,8 @@
       						<span class="icon-check2"></span>
       					</div>
       					<div class="text">
-	      					<h3>Comfortable Clinics</h3>
-	      					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+	      					<h3>소아청소년과</h3>
+	      					<p>FrontToBack병원 소아청소년과는 소아 알레르기, 호흡기 및 아토피 피부 질환, 유전 및 대사 질환, 내분비 질환, 뇌전증 등의 신경계 질환, 소아 혈액 조양 질환, 소아 심장 질환 등 세부적인 전문진료를 진행하고 있습니다.</p>
       					</div>
       				</div>
       			</div>
