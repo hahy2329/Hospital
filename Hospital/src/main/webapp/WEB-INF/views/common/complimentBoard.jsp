@@ -67,6 +67,23 @@
 			        		</tr>
 			        	</c:forEach>
 			        </tbody>
+			        <tr align="right">
+			        	<td colspan="4">
+			        		<input type="button" value="글쓰기" onclick="location.href='${contextPath}/common/complimentAddBoard'">
+			        	</td>
+			        </tr>
+			        <tr>
+			        	<td colspan="4" align="center">
+			        		<select id="searchKeyword">
+			        			<option value="total">전체검색</option>
+			        			<option value="patientId">아이디</option>
+			        			<option value="complimentBoardSubject">제목</option>
+			        			<option value="complimentBoardContent">내용</option>
+			        		</select>
+			        		<input type="text" id="searchWord" name="searchWord" value="${searchWord }">
+			        		<input type="button" value="검색" onclick="getBoardList()">
+			        	</td>
+			        </tr>
 			    </table>
 			</div>
 		</section>
