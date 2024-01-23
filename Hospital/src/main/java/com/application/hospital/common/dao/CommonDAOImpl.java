@@ -31,4 +31,10 @@ public class CommonDAOImpl implements CommonDAO {
 		return sqlSession.selectOne("patient.getBcryptPasswordEncoder", loginId);
 	}
 
+	@Override
+	public void complimentAddBoard(ComplimentBoardDTO complimentBoardDTO) throws Exception {
+		sqlSession.insert("complimentBoard.complimentAddBoard", complimentBoardDTO);
+		
+	}
+
 }

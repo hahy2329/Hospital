@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.application.hospital.common.dto.CommonLoginDTO;
+import com.application.hospital.common.dto.ComplimentBoardDTO;
 import com.application.hospital.common.service.CommonService;
 import com.application.hospital.medical.dto.MedicalDTO;
 import com.application.hospital.medical.service.MedicalService;
@@ -196,6 +197,29 @@ public class CommonController {
 		commonLoginDTO.setLoginPassword(request.getParameter("loginPassword"));
 		
 		return new ResponseEntity<String>(commonService.checkLoginInfo(commonLoginDTO), HttpStatus.OK);
+		
+	}
+	
+	@PostMapping("/complimentAddBoard")
+	public ResponseEntity<Object> complimentAddBoard(HttpServletRequest request) throws Exception{
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		
+		ComplimentBoardDTO complimentBoardDTO = new ComplimentBoardDTO();
+		complimentBoardDTO.setPatientId(request.getParameter("loginId"));
+		complimentBoardDTO.setComplimentBoardSubject(request.getParameter("complimentBoardSubject"));
+		complimentBoardDTO.setComplimentBoardContent(request.getParameter("complimentBoardContent"));
+		
+		
+		commonService.complimentAddBoard(complimentBoardDTO);
+		
+		String message = "<script>";
+		message +="alert('등록이 완료되었습니다.');";
+		message +="location.href='" + request.getContextPath() + "/';";
+		message +="</script>";
+		
+		return new ResponseEntity<Object>(message, responseHeaders, HttpStatus.OK);
 		
 	}
 }

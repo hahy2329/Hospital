@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
+
 	var isValid = false;
 	
 	$().ready(function(){
@@ -43,9 +44,15 @@
 			});
 		});
 		
-		
-		
-		
+		$("form").submit(function(){
+			
+			if(isValid == true){
+				return true;
+			}else{
+				alert("계정 인증을 확인해 주세요.");
+				return false;
+			}
+		});
 	});
 </script>
 </head>

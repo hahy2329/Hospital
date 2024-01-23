@@ -96,6 +96,17 @@
 		</choose>
 	</select>
 	
+	<insert id="complimentAddBoard" parameterType="ComplimentBoardDTO">
+		
+		INSERT INTO COMPLIMENTBOARD(COMPLIMENT_BOARD_SUBJECT, COMPLIMENT_BOARD_CONTENT, PATIENT_ID)
+		
+		VALUES(
+			
+			#{complimentBoardSubject},
+			#{complimentBoardContent},
+			#{patientId}
+		)
 	
+	</insert>
 	
 </mapper>
