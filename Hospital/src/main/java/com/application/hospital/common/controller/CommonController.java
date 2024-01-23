@@ -115,7 +115,7 @@ public class CommonController {
 	public ModelAndView complimentBoard(HttpServletRequest request) throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/patient/complimentBoard");
+		mv.setViewName("/common/complimentBoard");
 		
 		String searchKeyword = request.getParameter("searchKeyword");
 		if(searchKeyword == null) searchKeyword = "total";

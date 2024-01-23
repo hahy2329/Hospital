@@ -21,4 +21,9 @@
 		<put-attribute name="title" value="병원페이지"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/common/introduce.jsp"></put-attribute>
 	</definition>
+	
+	<definition name="/common/complimentBoard" extends="baseLayout">
+		<put-attribute name="title" value="병원페이지"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/common/complimentBoard.jsp"></put-attribute>
+	</definition>
 </tiles-definitions>
