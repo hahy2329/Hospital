@@ -69,7 +69,7 @@
 			        </tbody>
 			        <tr align="right">
 			        	<td colspan="4">
-			        		<input type="button" value="글쓰기" onclick="location.href='${contextPath}/common/complimentAddBoard'">
+			        		<input type="button" value="글쓰기" class="btn btn-primary btn-outline-primary" onclick="location.href='${contextPath}/common/complimentAddBoard'">
 			        	</td>
 			        </tr>
 			        <tr>
@@ -81,7 +81,7 @@
 			        			<option value="complimentBoardContent">내용</option>
 			        		</select>
 			        		<input type="text" id="searchWord" name="searchWord" value="${searchWord }">
-			        		<input type="button" value="검색" onclick="getBoardList()">
+			        		<input type="button" value="검색" onclick="getBoardList()" class="btn btn-primary btn-outline-primary">
 			        	</td>
 			        </tr>
 			    </table>

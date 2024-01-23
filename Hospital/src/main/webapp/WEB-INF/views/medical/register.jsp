@@ -162,11 +162,7 @@
 					return false;
 				}
 			}
-			
-			
 		});
-		
-		
 	});
 
 </script>
@@ -196,8 +192,8 @@
 		            <form action="${contextPath }/medical/register" method="post">
 		              <div class="form-group">
 		                <input type="text" name="medicalId" id="medicalId" class="form-control" minlength="6" maxlength="15" placeholder="ID를 입력해주세요." required="required">
+		                <input type="button" id="btnOverlapped" class="btn btn-primary btn-outline-primary" value="중복확인">
 		                <p class="answer"></p>
-		                <input type="button" id="btnOverlapped" value="중복확인">
 		              </div>
 		              <div class="form-group">
 		                <input type="password" name="medicalPw" id="medicalPw" class="form-control" placeholder="Password를 입력해주세요." required="required">
@@ -244,22 +240,32 @@
 		                      </select>
 		                  </div>
 		                      <input type="hidden" name="medicalBirth"/>
-		                <div> 	
+		                <div>
+		                	<br> 	
 		                	<input type="email" class="form-control" id="medicalEmail" name="medicalEmail" placeholder="E-mail을 입력해주세요." required="required">
+		              		<input type="button" id="btnOverlappedEmail" class="btn btn-primary btn-outline-primary" value="중복확인">
 		              		<p class="answerEmail"></p>    
-		              		<input type="button" id="btnOverlappedEmail" value="중복확인">
+		              	</div>
+		              	<div>
+		              		<br>
 		              	</div>
 		              	<div>
 		              		<input type="text" id="medicalZipcode" name="medicalZipcode"  class="form-control" placeholder="우편번호" required="required">
-		              		<input type="button" value="검색" onclick="execDaumPostMedicalcode();" class="btn btn-primary btn-outline-primary"> 
+		              		<input type="button" value="검색" onclick="execDaumPostMedicalcode();" class="btn btn-primary btn-outline-primary">
+		              		<div>
+		              			<br>
+		              		</div> 
 		              		<input type="text" id="medicalRoadAddress" name="medicalRoadAddress"  class="form-control" placeholder="도로명 주소" required="required">
 		              		<input type="text" id="medicalJibunAddress" name="medicalJibunAddress"  class="form-control" placeholder="지번 주소" required="required">
 		              		<input type="text" id="medicalNamujiAddress" name="medicalNamujiAddress"  class="form-control" placeholder="나머지 주소">
 		              	</div>
+		              	<div>
+		              		<br>
+		              	</div>
 		              	<div class="form-group">
 			                <input type="text" name="medicalCode" id="medicalCode" class="form-control" placeholder="의료진 인증 코드를 입력해주세요." required="required">
+			                <input type="button" id="btnOverlappedCode" class="btn btn-primary btn-outline-primary" value="중복확인">
 			                <p class="answerCode"></p>
-			                <input type="button" id="btnOverlappedCode" value="중복확인">
 		              	</div>
 		              	    <br>
 		                </div>

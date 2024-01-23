@@ -179,4 +179,12 @@ public class CommonController {
 		
 	}
 	
+	@GetMapping("/complimentAddBoard")
+	public ModelAndView complimentAddBoard() throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/common/complimentAddBoard");
+		
+		return mv;
+	}
 }

@@ -52,7 +52,7 @@
                 <input type="password" name="loginPassword" class="form-control" placeholder="Password를 입력해주세요.">
               </div>
               <div>
-              	<input type="submit" value="전송" class="btn btn-primary btn-outline-primary"/>
+              	<input type="submit" value="로그인" class="btn btn-primary btn-outline-primary"/>
               </div>
             </form>
             <br>
