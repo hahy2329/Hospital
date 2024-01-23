@@ -85,6 +85,19 @@
 			        	</td>
 			        </tr>
 			    </table>
+			    <div style="display: table; margin-left: auto; margin-right: auto">
+                	<ul>
+                    	<c:if test="${startPage > 10 }">
+                        	<a href="${contextPath }/common/complimentBoard?currentPageNumber=${startPage - 10}&onePageViewCnt=${onePageViewCnt }&searchKeyword=${searchKeyword }&searchWord=${searchWord }">이전 &nbsp;</a>
+                        </c:if>
+                        	<c:forEach var="i" begin="${startPage }" end="${endPage }">
+                        		<a href="${contextPath }/common/complimentBoard?currentPageNumber=${i }&onePageViewCnt=${onePageViewCnt  }&searchKeyword=${searchKeyword }&searchWord=${searchWord}">${i }&nbsp;</a>
+                        	</c:forEach>
+                        <c:if test="${endPage != allPageCnt && endPage >=10}">
+                        	<a href="${contextPath }/common/complimentBoard?currentPageNumber=${startPage + 10}&onePageViewCnt=${onePageViewCnt  }&searchKeyword=${searchKeyword }&searchWord=${searchWord}">다음</a>	
+                        </c:if>
+                     </ul>
+                 </div>
 			</div>
 		</section>
 </body>
