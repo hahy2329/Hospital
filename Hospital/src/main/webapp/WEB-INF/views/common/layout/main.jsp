@@ -28,27 +28,27 @@
     	<div class="container">
     		<div class="row no-gutters">
     			<div class="col-md-3 color-1 p-4">
-    				<h3 class="mb-4">Emergency Cases</h3>
-    				<p>A small river named Duden flows by their place and supplies</p>
-    				<span class="phone-number">+ (123) 456 7890</span>
+    				<h3 class="mb-4">응급 상황</h3>
+    				<p>응급 상황 시, 아래의 번호로 연락 부탁드립니다.</p>
+    				<span class="phone-number">+(82)111-2222</span>
     			</div>
     			<div class="col-md-3 color-2 p-4">
-    				<h3 class="mb-4">Opening Hours</h3>
+    				<h3 class="mb-4">진료 시간</h3>
     				<p class="openinghours d-flex">
-    					<span>Monday - Friday</span>
-    					<span>8:00 - 19:00</span>
+    					<span>월요일 - 금요일</span>
+    					<span>08:00 - 19:00</span>
     				</p>
     				<p class="openinghours d-flex">
-    					<span>Saturday</span>
-    					<span>10:00 - 17:00</span>
+    					<span>토요일</span>
+    					<span>08:00 - 16:00</span>
     				</p>
     				<p class="openinghours d-flex">
-    					<span>Sunday</span>
-    					<span>10:00 - 16:00</span>
+    					<span>응급실</span>
+    					<span>연중무휴 24시간 진료</span>
     				</p>
     			</div>
     			<div class="col-md-6 color-3 p-4">
-    				<h3 class="mb-2">Make an Appointment</h3>
+    				<h3 class="mb-2">진료 예약</h3>
     				<form action="#" class="appointment-form">
 	            <div class="row">
 	            	<div class="col-sm-4">
@@ -56,10 +56,10 @@
 			              <div class="select-wrap">
                       <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                       <select name="" id="" class="form-control">
-                      	<option value="">Department</option>
-                        <option value="">Teeth Whitening</option>
-                        <option value="">Teeth CLeaning</option>
-                        <option value="">Quality Brackets</option>
+                      	<option value="">부서</option>
+                        <option value="신경외과">신경외과</option>
+                        <option value="정형외과">정형외과</option>
+                        <option value="소아청소년과">소아청소년과</option>
                         <option value="">Modern Anesthetic</option>
                       </select>
                     </div>
