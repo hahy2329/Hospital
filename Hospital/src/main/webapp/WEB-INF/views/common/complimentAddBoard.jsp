@@ -6,6 +6,48 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+	var isValid = false;
+	
+	$().ready(function(){
+		
+		$(document).on("click", "#btnOverlapped", function(){
+			
+			$(".answer").empty();
+			
+			var loginId = $("#loginId").val();
+			var loginPassword = $("#loginPassword").val();
+			
+			if(loginPassword ==''){
+				alert("패스워드를 입력해 주세요.");
+				$(".answer").append("<p style='color: red;'>" + "패스워드를 입력해 주세요." + "</p>");
+				return;
+			}
+			
+			$.ajax({
+				
+				type : "get",
+				url : "${contextPath}/common/checkLoginInfo?loginId="+loginId + "&loginPassword=" + loginPassword,
+				success : function(data){
+					if(data == "successLoginInfo"){
+						alert("인증이 완료 되었습니다.");
+						$("#btnOverlapped").remove();
+						$(".answer").append("<p style='color: green;'>" + "인증이 완료 되었습니다." + "</p>");
+						isValid = true;
+					}else{
+						alert("패스워드를 다시 확인해 주세요.");
+						$(".answer").append("<p style='color: red;'>" + "패스워드를 확인해 주세요." + "</p>");
+						isValid = false;
+					}
+				}		
+			});
+		});
+		
+		
+		
+		
+	});
+</script>
 </head>
 <body>
 	<section class="home-slider owl-carousel">
@@ -31,79 +73,25 @@
 		          <div class="col-md-6 pr-md-5">
 		            <form action="${contextPath }/common/complimentAddBoard" method="post">
 		              <div class="form-group">
-		                <input type="text" name="loginId" id="loginId" class="form-control" minlength="6" maxlength="15" placeholder="ID를 입력해주세요." required="required">
+		                <input type="text" name="loginId" id="loginId" value="${sessionScope.patientId }" class="form-control" placeholder="ID를 입력해주세요." readonly="readonly">
 		                <input type="password" name="loginPassword" id="loginPassword" class="form-control" placeholder="Password를 입력해주세요." required="required">
 		                <input type="button" id="btnOverlapped" class="btn btn-primary btn-outline-primary" value="인증">
 		                <p class="answer"></p>
 		              </div>      
 		              <div class="form-group">
-		                <input type="text" name="medicalName" class="form-control" placeholder="이름을 입력해주세요." required="required">
+		                <input type="text" name="complimentBoardSubject" class="form-control" placeholder="제목을 입력해 주세요." required="required">
 		              </div>
-		              <div> 	
-		                <input type="text" class="form-control" value="생년월일을 선택해주세요." readonly="readonly">
+		              <div class="form-group">
+              			<textarea name="complimentBoardContent" id="appointment_message" class="form-control" cols="50" rows="30" placeholder="메세지를 입력해 주세요." required="required"></textarea>
+            		  </div>
 		              <div>
-		                <select id="birthY" class="form-control" required="required">
-		                    <c:forEach var="i" begin="0" end="2024">
-		                    	<option>${2024-i }</option>
-		                    </c:forEach>
-		                </select>
-		              </div>	
-		              	<div>
-		                 	<select id="birthM" class="form-control" required="required">
-		                       <c:forEach var="i" begin="1" end="12">
-		                            	<c:choose>
-		                            		<c:when test="${i<10 }">
-		                            			<option>0${i }</option>
-		                            		</c:when>
-		                            		<c:otherwise>
-		                            			<option>${i }</option>
-		                            		</c:otherwise>
-		                            	</c:choose>
-		                          </c:forEach>
-		                      </select>
-		                 </div>
-		                 <div>
-		                     <select id="birthD" class="form-control" required="required">
-		                           <c:forEach var="i" begin="1" end="31">
-		                            	<c:choose>
-		                            		<c:when test="${i<10 }">
-		                            			<option>0${i }</option>
-		                            		</c:when>
-		                            		<c:otherwise>
-		                            			<option>${i }</option>
-		                            		</c:otherwise>
-		                            	</c:choose>
-		                            </c:forEach>
-		                      </select>
-		                  </div>
-		                      <input type="hidden" name="medicalBirth"/>
-		                <div> 	
-		                	<input type="email" class="form-control" id="medicalEmail" name="medicalEmail" placeholder="E-mail을 입력해주세요." required="required">
-		              		<p class="answerEmail"></p>    
-		              		<input type="button" id="btnOverlappedEmail" value="중복확인">
-		              	</div>
-		              	<div>
-		              		<input type="text" id="medicalZipcode" name="medicalZipcode"  class="form-control" placeholder="우편번호" required="required">
-		              		<input type="button" value="검색" onclick="execDaumPostMedicalcode();" class="btn btn-primary btn-outline-primary"> 
-		              		<input type="text" id="medicalRoadAddress" name="medicalRoadAddress"  class="form-control" placeholder="도로명 주소" required="required">
-		              		<input type="text" id="medicalJibunAddress" name="medicalJibunAddress"  class="form-control" placeholder="지번 주소" required="required">
-		              		<input type="text" id="medicalNamujiAddress" name="medicalNamujiAddress"  class="form-control" placeholder="나머지 주소">
-		              	</div>
-		              	<div class="form-group">
-			                <input type="text" name="medicalCode" id="medicalCode" class="form-control" placeholder="의료진 인증 코드를 입력해주세요." required="required">
-			                <p class="answerCode"></p>
-			                <input type="button" id="btnOverlappedCode" value="중복확인">
-		              	</div>
-		              	    <br>
-		                </div>
-		              <div>
-		              	<input type="submit" value="전송" class="btn btn-primary btn-outline-primary"/>
-		              <br>
+		              	<input type="submit" value="게시글 작성" class="btn btn-primary btn-outline-primary"/>
+		              	<br>
 		              </div>
 		            </form>
 		          </div>
-		   </div>
-		</div>
-	</section>
+		      </div>
+		 </div>
+	 </section>
 </body>
 </html>

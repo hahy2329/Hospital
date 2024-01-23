@@ -187,4 +187,15 @@ public class CommonController {
 		
 		return mv;
 	}
+	
+	@GetMapping("/checkLoginInfo")
+	public ResponseEntity<String> checkLoginInfo(HttpServletRequest request) throws Exception{
+		
+		CommonLoginDTO commonLoginDTO = new CommonLoginDTO();
+		commonLoginDTO.setLoginId(request.getParameter("loginId"));
+		commonLoginDTO.setLoginPassword(request.getParameter("loginPassword"));
+		
+		return new ResponseEntity<String>(commonService.checkLoginInfo(commonLoginDTO), HttpStatus.OK);
+		
+	}
 }
