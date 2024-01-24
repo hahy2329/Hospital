@@ -48,6 +48,8 @@ public class CommonServiceImpl implements CommonService {
 
 	@Override
 	public ComplimentBoardDTO getComplimentBoardDTO(long complimentBoardId) throws Exception {
+		commonDAO.increaseReadCnt(complimentBoardId);
+		
 		return commonDAO.getComplimentBoardDTO(complimentBoardId);
 	}
 

@@ -109,6 +109,16 @@
 	
 	</insert>
 	
+	<update id="increaseReadCnt" parameterType="long">
+		UPDATE
+			COMPLIMENTBOARD
+		SET
+			COMPLIMENT_BOARD_READ_CNT = COMPLIMENT_BOARD_READ_CNT + 1
+		WHERE
+			COMPLIMENT_BOARD_ID = #{complimentBoardId}
+	
+	</update>
+	
 	<select id="getComplimentBoardDTO" parameterType="long" resultType="ComplimentBoardDTO">
 	
 		SELECT

@@ -38,8 +38,15 @@ public class CommonDAOImpl implements CommonDAO {
 	}
 
 	@Override
+	public void increaseReadCnt(long complimentBoardId) throws Exception {
+		sqlSession.update("complimentBoard.increaseReadCnt", complimentBoardId);
+		
+	}
+
+	@Override
 	public ComplimentBoardDTO getComplimentBoardDTO(long complimentBoardId) throws Exception {
 		return sqlSession.selectOne("complimentBoard.getComplimentBoardDTO", complimentBoardId);
 	}
+
 
 }
