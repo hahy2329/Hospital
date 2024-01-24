@@ -46,4 +46,9 @@ public class CommonServiceImpl implements CommonService {
 		commonDAO.complimentAddBoard(complimentBoardDTO);
 	}
 
+	@Override
+	public ComplimentBoardDTO getComplimentBoardDTO(long complimentBoardId) throws Exception {
+		return commonDAO.getComplimentBoardDTO(complimentBoardId);
+	}
+
 }

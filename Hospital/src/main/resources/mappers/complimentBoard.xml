@@ -109,4 +109,15 @@
 	
 	</insert>
 	
+	<select id="getComplimentBoardDTO" parameterType="long" resultType="ComplimentBoardDTO">
+	
+		SELECT
+			*
+		FROM
+			COMPLIMENTBOARD
+		WHERE
+			COMPLIMENT_BOARD_ID = #{complimentBoardId}
+	
+	</select>
+	
 </mapper>

@@ -12,4 +12,5 @@ public interface CommonService {
 	public List<ComplimentBoardDTO> getComplimentBoardList(Map<String, Object> searchMap) throws Exception;
 	public String checkLoginInfo(CommonLoginDTO commonLoginDTO) throws Exception;
 	public void complimentAddBoard(ComplimentBoardDTO complimentBoardDTO) throws Exception;
+	public ComplimentBoardDTO getComplimentBoardDTO(long complimentBoardId) throws Exception;
 }

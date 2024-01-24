@@ -222,4 +222,18 @@ public class CommonController {
 		return new ResponseEntity<Object>(message, responseHeaders, HttpStatus.OK);
 		
 	}
+	
+	@GetMapping("/complimentBoardDetail")
+	public ModelAndView complimentBoardDetail(@RequestParam("complimentBoardId") long complimentBoardId) throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		ComplimentBoardDTO complimentBoardDTO = commonService.getComplimentBoardDTO(complimentBoardId);
+		mv.addObject("complimentBoardDTO", complimentBoardDTO);
+		mv.setViewName("/common/complimentBoardDetail");
+		
+		return mv;
+		
+	}
+	
 }

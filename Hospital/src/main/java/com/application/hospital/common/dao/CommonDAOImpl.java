@@ -37,4 +37,9 @@ public class CommonDAOImpl implements CommonDAO {
 		
 	}
 
+	@Override
+	public ComplimentBoardDTO getComplimentBoardDTO(long complimentBoardId) throws Exception {
+		return sqlSession.selectOne("complimentBoard.getComplimentBoardDTO", complimentBoardId);
+	}
+
 }
