@@ -19,14 +19,13 @@
 	        <ul class="navbar-nav ml-auto">
 		          <li class="nav-item"><a href="${contextPath }/" class="nav-link">Home</a></li>
 		          <li class="nav-item"><a href="${contextPath }/common/introduce" class="nav-link">병원 소개</a></li>
-				<c:if test="${sessionScope.patientId ne null }">		          
-		          <li class="nav-item"><a href="services.html" class="nav-link">진료 예약</a></li>
 		          <li class="nav-item"><a href="services.html" class="nav-link">의료진 정보</a></li>
 		          <li class="nav-item"><a href="${contextPath }/common/complimentBoard" class="nav-link">불편/민원 접수</a></li>
 		          <li class="nav-item"><a href="services.html" class="nav-link">직원을 칭찬합니다.</a></li>
+				<c:if test="${sessionScope.patientId ne null }">		          
+		          <li class="nav-item"><a href="services.html" class="nav-link">진료 예약</a></li>
 		        </c:if>
 		        <c:if test="${sessionScope.medicalId ne null }">  
-		          <li class="nav-item"><a href="contact.html" class="nav-link">불편/민원 관리</a></li>
 		          <li class="nav-item"><a href="contact.html" class="nav-link">예약 관리</a></li>
 		          <li class="nav-item"><a href="contact.html" class="nav-link">출퇴근 도장</a></li>
 		          <li class="nav-item"><a href="contact.html" class="nav-link">메일 관리</a></li>

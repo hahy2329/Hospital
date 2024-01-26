@@ -1,5 +1,6 @@
 package com.application.hospital.common.dto;
 
+
 import org.springframework.stereotype.Component;
 
 import lombok.AllArgsConstructor;
@@ -10,8 +11,12 @@ import lombok.NoArgsConstructor;
 @Component
 @NoArgsConstructor
 @AllArgsConstructor
-public class CommonLoginDTO {
+public class CommonLoginDTO{
+	
 	
 	private String loginId;
 	private String loginPassword;
+	
+	
+
 }
