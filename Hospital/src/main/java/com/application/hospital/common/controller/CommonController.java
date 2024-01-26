@@ -31,14 +31,13 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/common")
 public class CommonController {
 	
 	private final PatientService patientService;
 	private final MedicalService medicalService;
 	private final CommonService commonService;
 	
-	@GetMapping("/login")
+	@RequestMapping("/login")
 	public ModelAndView login() throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
@@ -49,7 +48,7 @@ public class CommonController {
 	}
 	
 	
-	@PostMapping("/login")
+	@RequestMapping("/loginSuccess")
 	public ResponseEntity<Object> login(HttpServletRequest request, CommonLoginDTO commonLoginDTO) throws Exception{
 		
 		
