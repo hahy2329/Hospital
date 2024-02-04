@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.application.hospital.common.dto.ComplimentBoardDTO;
+import com.application.hospital.common.service.CustomUserDetails;
 
 import lombok.RequiredArgsConstructor;
 
@@ -46,6 +47,11 @@ public class CommonDAOImpl implements CommonDAO {
 	@Override
 	public ComplimentBoardDTO getComplimentBoardDTO(long complimentBoardId) throws Exception {
 		return sqlSession.selectOne("complimentBoard.getComplimentBoardDTO", complimentBoardId);
+	}
+
+	@Override
+	public CustomUserDetails getLoginInfo(String username) throws Exception {
+		return sqlSession.selectOne("user.getLoginInfo", username);
 	}
 
 

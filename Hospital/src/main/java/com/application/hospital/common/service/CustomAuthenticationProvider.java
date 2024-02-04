@@ -3,14 +3,21 @@ package com.application.hospital.common.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.application.hospital.common.dto.CommonLoginDTO;
+import com.application.hospital.patient.dto.PatientDTO;
+import com.application.hospital.patient.service.PatientService;
+
+import lombok.RequiredArgsConstructor;
 
 
 
@@ -21,9 +28,10 @@ import com.application.hospital.common.dto.CommonLoginDTO;
  * (해당 코딩에서는 DB를 따로 구현을 안했다.)
  * 
  * */
-
+@RequiredArgsConstructor
 public class CustomAuthenticationProvider implements AuthenticationProvider {
-
+	
+	private final CustomUserDetailsService customUserDetailsService;
 	
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
@@ -32,29 +40,11 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 		String password = (String)authentication.getCredentials(); //Resource에 접근하는 대상의 비밀번호
 		//form에서 전달 된, name태그 설정이 username-parameter, password-parameter로 되있는 값을 읽어온다.
 		
-		if(id.equals("fail")) {	
-			return null;
-		}
-		
-		CommonLoginDTO commonLoginDTO = new CommonLoginDTO();
-		commonLoginDTO.setLoginId(id);
-		commonLoginDTO.setLoginPassword(password);
-		
-		/*
-		 * GrantedAuthority는 현재 사용자(Principal)가 가지고 있는 권한을 의미하며, ROLE_ADMIN이나, ROLE_USER같이
-		 * ROLE_*의 형태로 사용한다. GrantedAutority 객체는 UserDetailsService에 의해 불러올 수 있고,특정 자원에 대한 
-		 * 권한이 있는지를 검사하여 접근 허용 여부를 결정한다.
-		 * 
-		 * 
-		 * */
-		List<GrantedAuthority> roles = new ArrayList<GrantedAuthority>();
-		roles.add(new SimpleGrantedAuthority("ROLE_USER"));
-		UsernamePasswordAuthenticationToken result = new UsernamePasswordAuthenticationToken(id, password, roles);
-		result.setDetails(commonLoginDTO);
-		//user session 생성 후 변환
 		
 		
-		return result;
+		CustomUserDetails user = (CustomUserDetails)customUserDetailsService.loadUserByUsername(id);
+	
+		return new UsernamePasswordAuthenticationToken(id, password, user.getAuthorities());
 		
 	}
 
@@ -64,8 +54,6 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 		return authentication.equals(UsernamePasswordAuthenticationToken.class);
 	}
 	
-	//Spring Security의 AuthenticationProvider을 구현한 클래스로  security-context에 provider로 등록 후 인증 절차를 구현 
-	//login view에서 login-processing-url로의 form action 진행 시 해당 클래스의 supports() > authenticate()순으로 인증 절차 진행
 	
 	
 	

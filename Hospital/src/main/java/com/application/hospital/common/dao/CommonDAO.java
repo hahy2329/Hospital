@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.application.hospital.common.dto.ComplimentBoardDTO;
+import com.application.hospital.common.service.CustomUserDetails;
 
 public interface CommonDAO {
 	
@@ -13,4 +14,6 @@ public interface CommonDAO {
 	public void complimentAddBoard(ComplimentBoardDTO complimentBoardDTO) throws Exception;
 	public void increaseReadCnt(long complimentBoardId) throws Exception;
 	public ComplimentBoardDTO getComplimentBoardDTO(long complimentBoardId) throws Exception;
+	public CustomUserDetails getLoginInfo(String username) throws Exception;
+
 }
