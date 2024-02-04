@@ -17,6 +17,7 @@ import com.application.hospital.common.dto.CommonLoginDTO;
 import com.application.hospital.patient.dto.PatientDTO;
 import com.application.hospital.patient.service.PatientService;
 
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 
@@ -28,10 +29,12 @@ import lombok.RequiredArgsConstructor;
  * (해당 코딩에서는 DB를 따로 구현을 안했다.)
  * 
  * */
-@RequiredArgsConstructor
+
+@NoArgsConstructor
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 	
-	private final CustomUserDetailsService customUserDetailsService;
+	@Autowired
+	private CustomUserDetailsService customUserDetailsService;
 	
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {

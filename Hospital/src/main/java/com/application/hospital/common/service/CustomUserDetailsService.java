@@ -1,5 +1,6 @@
 package com.application.hospital.common.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -8,15 +9,16 @@ import org.springframework.stereotype.Service;
 
 import com.application.hospital.common.dao.CommonDAO;
 
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
 	
-	
-	private final CommonDAO commonDAO;
-	private final BCryptPasswordEncoder bcryptPasswordEncoder;
+	@Autowired
+	private CommonDAO commonDAO;
+	private BCryptPasswordEncoder bcryptPasswordEncoder;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
