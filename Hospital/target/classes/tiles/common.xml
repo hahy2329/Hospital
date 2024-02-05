@@ -12,27 +12,27 @@
 		<put-attribute name="body" value="/WEB-INF/views/common/layout/main.jsp"></put-attribute>
 	</definition>
 	
-	<definition name="/common/login" extends="baseLayout">
+	<definition name="/login" extends="baseLayout">
 		<put-attribute name="title" value="병원페이지"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/common/login.jsp"></put-attribute>
 	</definition>
 	
-	<definition name="/common/introduce" extends="baseLayout">
+	<definition name="/introduce" extends="baseLayout">
 		<put-attribute name="title" value="병원페이지"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/common/introduce.jsp"></put-attribute>
 	</definition>
 	
-	<definition name="/common/complimentBoard" extends="baseLayout">
+	<definition name="/complimentBoard" extends="baseLayout">
 		<put-attribute name="title" value="병원페이지"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/common/complimentBoard.jsp"></put-attribute>
 	</definition>
 	
-	<definition name="/common/complimentAddBoard" extends="baseLayout">
+	<definition name="/complimentAddBoard" extends="baseLayout">
 		<put-attribute name="title" value="병원페이지"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/common/complimentAddBoard.jsp"></put-attribute>
 	</definition>
 	
-	<definition name="/common/complimentBoardDetail" extends="baseLayout">
+	<definition name="/complimentBoardDetail" extends="baseLayout">
 		<put-attribute name="title" value="병원페이지"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/common/complimentBoardDetail.jsp"></put-attribute>	
 	</definition>
