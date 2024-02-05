@@ -18,9 +18,9 @@
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
 		          <li class="nav-item"><a href="${contextPath }/" class="nav-link">Home</a></li>
-		          <li class="nav-item"><a href="${contextPath }/common/introduce" class="nav-link">병원 소개</a></li>
+		          <li class="nav-item"><a href="${contextPath }/introduce" class="nav-link">병원 소개</a></li>
 		          <li class="nav-item"><a href="services.html" class="nav-link">의료진 정보</a></li>
-		          <li class="nav-item"><a href="${contextPath }/common/complimentBoard" class="nav-link">불편/민원 접수</a></li>
+		          <li class="nav-item"><a href="${contextPath }/complimentBoard" class="nav-link">불편/민원 접수</a></li>
 		          <li class="nav-item"><a href="services.html" class="nav-link">직원을 칭찬합니다.</a></li>
 				<c:if test="${sessionScope.patientId ne null }">		          
 		          <li class="nav-item"><a href="services.html" class="nav-link">진료 예약</a></li>
@@ -32,7 +32,7 @@
 	        	</c:if>
 	        	<c:choose>
 		        	<c:when test="${sessionScope.patientId eq null and sessionScope.medicalId eq null }">
-			          <li class="nav-item cta"><a href="${contextPath }/common/login" class="nav-link"><span>로그인</span></a></li>
+			          <li class="nav-item cta"><a href="${contextPath }/login" class="nav-link"><span>로그인</span></a></li>
 		        	</c:when>
 		        	<c:otherwise>
 					  <c:if test="${sessionScope.patientId ne null }">

@@ -41,7 +41,7 @@ public class CommonController {
 	public ModelAndView login() throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/common/login");
+		mv.setViewName("/login");
 		
 		return mv;
 		
@@ -107,7 +107,7 @@ public class CommonController {
 	@GetMapping("/introduce")
 	public ModelAndView introduce() throws Exception{
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/common/introduce");
+		mv.setViewName("/introduce");
 		return mv;
 	}
 	
@@ -115,7 +115,7 @@ public class CommonController {
 	public ModelAndView complimentBoard(HttpServletRequest request) throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/common/complimentBoard");
+		mv.setViewName("/complimentBoard");
 		
 		String searchKeyword = request.getParameter("searchKeyword");
 		if(searchKeyword == null) searchKeyword = "total";
@@ -183,7 +183,7 @@ public class CommonController {
 	public ModelAndView complimentAddBoard() throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/common/complimentAddBoard");
+		mv.setViewName("/complimentAddBoard");
 		
 		return mv;
 	}
@@ -229,7 +229,7 @@ public class CommonController {
 		
 		ComplimentBoardDTO complimentBoardDTO = commonService.getComplimentBoardDTO(complimentBoardId);
 		mv.addObject("complimentBoardDTO", complimentBoardDTO);
-		mv.setViewName("/common/complimentBoardDetail");
+		mv.setViewName("/complimentBoardDetail");
 		
 		return mv;
 		
