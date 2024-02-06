@@ -26,12 +26,15 @@ public class CustomUserDetailsService implements UserDetailsService {
 		CustomUserDetails user = null;
 		
 		try {
+			
 			user = (CustomUserDetails)commonDAO.getLoginInfo(username);
+			
+			//여기다 bcryptPasswordEncoder 매칭
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(username == null) {
+		if(user == null) {
 			
 			return null;
 		}

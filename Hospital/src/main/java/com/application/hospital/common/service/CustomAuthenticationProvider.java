@@ -43,17 +43,25 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 		String password = (String)authentication.getCredentials(); //Resource에 접근하는 대상의 비밀번호
 		//form에서 전달 된, name태그 설정이 username-parameter, password-parameter로 되있는 값을 읽어온다.
 		
+		CustomUserDetails user = null;
 		
-		
-		CustomUserDetails user = (CustomUserDetails)customUserDetailsService.loadUserByUsername(id);
-		
-		if(user == null) {
-			return null;
+		try {
+			if(customUserDetailsService.matchPasswordEncoder(id, password)) {
+				user = (CustomUserDetails)customUserDetailsService.loadUserByUsername(id);
+				return new UsernamePasswordAuthenticationToken(id, password ,user.getAuthorities());
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
+		return null;
+		
+		
+		
 		
 		
 	
-		return new UsernamePasswordAuthenticationToken(id, password ,user.getAuthorities());
 		
 	}
 
