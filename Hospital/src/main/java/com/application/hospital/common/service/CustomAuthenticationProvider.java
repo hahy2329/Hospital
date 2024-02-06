@@ -46,8 +46,14 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 		
 		
 		CustomUserDetails user = (CustomUserDetails)customUserDetailsService.loadUserByUsername(id);
+		
+		if(user == null) {
+			return null;
+		}
+		
+		
 	
-		return new UsernamePasswordAuthenticationToken(id, password, user.getAuthorities());
+		return new UsernamePasswordAuthenticationToken(id, password ,user.getAuthorities());
 		
 	}
 
