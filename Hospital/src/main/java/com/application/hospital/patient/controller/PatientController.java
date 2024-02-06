@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.application.hospital.common.service.CustomUserDetails;
 import com.application.hospital.patient.dto.PatientDTO;
 import com.application.hospital.patient.service.PatientService;
 
@@ -55,24 +56,25 @@ public class PatientController {
 	public ResponseEntity<Object> register(HttpServletRequest request) throws Exception{
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Date birthDt = sdf.parse(request.getParameter("patientBirth"));
+		Date birthDt = sdf.parse(request.getParameter("birth"));
 		
-		PatientDTO patientDTO = new PatientDTO();
+		CustomUserDetails customUserDetails = new CustomUserDetails();
 		
-		patientDTO.setPatientId(request.getParameter("patientId"));
-		patientDTO.setPatientPw(request.getParameter("patientPw"));
-		patientDTO.setPatientName(request.getParameter("patientName"));
-		patientDTO.setPatientBirth(birthDt);
-		patientDTO.setPatientEmail(request.getParameter("patientEmail"));
-		patientDTO.setPatientZipcode(request.getParameter("patientZipcode"));
-		patientDTO.setPatientRoadAddress(request.getParameter("patientRoadAddress"));
-		patientDTO.setPatientJibunAddress(request.getParameter("patientJibunAddress"));
-		patientDTO.setPatientNamujiAddress(request.getParameter("patientNamujiAddress"));
+		customUserDetails.setId(request.getParameter("id"));
+		customUserDetails.setPassword(request.getParameter("password"));
+		customUserDetails.setName(request.getParameter("name"));
+		customUserDetails.setBirth(birthDt);
+		customUserDetails.setEmail(request.getParameter("email"));
+		customUserDetails.setZipcode(request.getParameter("zipcode"));
+		customUserDetails.setRoadAddress(request.getParameter("roadAddress"));
+		customUserDetails.setJibunAddress(request.getParameter("jibunAddress"));
+		customUserDetails.setNamujiAddress(request.getParameter("namujiAddress"));
+		customUserDetails.setAuthority("ROLE_USER");
 		
 		
-		System.out.println(patientDTO.getPatientEmail());
+	
 		
-		patientService.isertPatientInfo(patientDTO);
+		patientService.isertPatientInfo(customUserDetails);
 		
 		String message = "<script>";
 		message +="alert('회원가입 완료!');";

@@ -54,9 +54,9 @@
 		                fullRoadAddr += extraRoadAddr;
 		            }
 		
-		            document.getElementById('patientZipcode').value = data.zonecode; //5자리 새우편번호 사용
-		            document.getElementById('patientRoadAddress').value = fullRoadAddr;
-		            document.getElementById('patientJibunAddress').value = data.jibunAddress;
+		            document.getElementById('zipcode').value = data.zonecode; //5자리 새우편번호 사용
+		            document.getElementById('roadAddress').value = fullRoadAddr;
+		            document.getElementById('jibunAddress').value = data.jibunAddress;
 		          
 		        }
 		    }).open();

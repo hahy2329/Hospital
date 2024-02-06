@@ -5,37 +5,38 @@
 	<select id="duplicatedId" parameterType="String" resultType="String">
 		
 		SELECT 
-			PATIENT_ID
+			ID
 		FROM
-			PATIENT
+			CUSTOMMEMBER
 		WHERE
-			PATIENT_ID = #{patientId}
+			ID = #{patientId}
 	</select>
 	
 	<select id="duplicatedEmail" parameterType="String" resultType="String">
 	
 		SELECT
-			PATIENT_EMAIL
+			EMAIL
 		FROM
-			PATIENT
+			CUSTOMMEMBER
 		WHERE
-			PATIENT_EMAIL = #{patientEmail}
+			EMAIL = #{patientEmail}
 	
 	</select>
 	
-	<insert id="insertPatientInfo" parameterType="PatientDTO">
-		INSERT INTO PATIENT(PATIENT_ID, PATIENT_PW, PATIENT_NAME, PATIENT_BIRTH, PATIENT_EMAIL, PATIENT_ZIPCODE, PATIENT_ROAD_ADDRESS, PATIENT_JIBUN_ADDRESS, PATIENT_NAMUJI_ADDRESS)
+	<insert id="insertPatientInfo" parameterType="CustomUserDetails">
+		INSERT INTO CUSTOMMEMBER(ID, PASSWORD, NAME, BIRTH, EMAIL, ZIPCODE, ROAD_ADDRESS, JIBUN_ADDRESS, NAMUJI_ADDRESS, AUTHORITY)
 		
 		VALUES(
-			#{patientId},
-			#{patientPw},
-			#{patientName},
-			#{patientBirth},
-			#{patientEmail},
-			#{patientZipcode},
-			#{patientRoadAddress},
-			#{patientJibunAddress},
-			#{patientNamujiAddress}
+			#{id},
+			#{password},
+			#{name},
+			#{birth},
+			#{email},
+			#{zipcode},
+			#{roadAddress},
+			#{jibunAddress},
+			#{namujiAddress},
+			#{authority}
 		)
 		
 		

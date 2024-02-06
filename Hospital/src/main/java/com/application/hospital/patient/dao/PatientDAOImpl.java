@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.application.hospital.common.dto.CommonLoginDTO;
+import com.application.hospital.common.service.CustomUserDetails;
 import com.application.hospital.patient.dto.PatientDTO;
 
 import lombok.RequiredArgsConstructor;
@@ -25,8 +26,8 @@ public class PatientDAOImpl implements PatientDAO {
 	}
 
 	@Override
-	public void insertPatientInfo(PatientDTO patientDTO) throws Exception {
-		sqlSession.insert("patient.insertPatientInfo", patientDTO);
+	public void insertPatientInfo(CustomUserDetails customUserDetails) throws Exception {
+		sqlSession.insert("patient.insertPatientInfo", customUserDetails);
 		
 	}
 	

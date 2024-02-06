@@ -23,24 +23,24 @@
 			
 			$(".answer").empty();
 			
-			var patientId = $("#patientId").val();
+			var id = $("#id").val();
 			
-			if(patientId == ''){
+			if(id == ''){
 				alert("ID를 입력하세요.");
 				$(".answer").append("<p style='color: red;'>" + "ID를 입력해 주세요." + "</p>");
 				return;
 			}
-			if(patientId.length < 6 || patientId.length > 15){
+			if(id.length < 6 || id.length > 15){
 				alert("6자리 이상 15자리 이하로 입력해 주세요.");
 				$(".answer").append("<p style='color: red;'>" + "6자리 이상 15자리 이하로 입력해 주세요." + "</p>");
 				return;
 			}
-			if(patientId.search(/\s/) != -1){
+			if(id.search(/\s/) != -1){
 				alert("공백은 허용할 수 없습니다.");
 				$(".answer").append("<p style='color: red;'>" + "공백은 허용할 수 없습니다." + "</p>");
 				return false;
 			} //공백 체크
-			if(special_pattern.test(patientId) == true){
+			if(special_pattern.test(id) == true){
 				alert("특수문자는 허용할 수 없습니다.");
 				$(".answer").append("<p style='color: red;'>" + "특수문자는 사용할 수 없습니다." + "</p>");
 				return false;
@@ -48,7 +48,7 @@
 			
 			$.ajax({
 				type : "get",
-				url : "${contextPath}/patient/checkDuplicatedId?patientId=" + patientId,
+				url : "${contextPath}/patient/checkDuplicatedId?id=" + id,
 				success : function(data){
 					if(data == "notDuplicate"){
 						alert("사용할 수 있는 ID입니다.");
@@ -67,9 +67,9 @@
 			
 			$(".answerEmail").empty();
 			
-			var patientEmail = $("#patientEmail").val();
+			var email = $("#email").val();
 			
-			if(patientEmail == ''){
+			if(email == ''){
 				alert("Email을 입력해 주세요.");
 				$(".answerEmail").append("<p style='color: red;'>" + "Email을 입력해 주세요." + "</p>");
 				return;
@@ -78,7 +78,7 @@
 			$.ajax({
 				
 				type : "get",
-				url : "${contextPath}/patient/checkDuplicatedEmail?patientEmail" + patientEmail,
+				url : "${contextPath}/patient/checkDuplicatedEmail?email" + email,
 				success : function(data){
 					if(data == "notDuplicateEmail"){
 						alert("사용할 수 있는 Email입니다.");
@@ -102,19 +102,19 @@
 				alert("Email을 확인해 주세요.");
 				return false;
 			}
-			if($("#patientPw").val() == ''){
+			if($("#password").val() == ''){
 				alert("패스워드를 확인해 주세요.");
 				return false;
 			}
 			if(isValidId == true && isValidEmail == true){
-				if($("#patientPw").val() == $("#confirmPasswd").val()){
-					if(!pattern1.test($("#patientPw").val()) || !pattern2.test($("#patientPw").val()) || !pattern3.test($("#patientPw").val()) || $("#patientPw").val().length<8 || $("#patientPw").val().length>50){
+				if($("#password").val() == $("#confirmPasswd").val()){
+					if(!pattern1.test($("#password").val()) || !pattern2.test($("#password").val()) || !pattern3.test($("#password").val()) || $("#password").val().length<8 || $("#password").val().length>50){
 						
 						alert("영문+숫자+특수기호 8자리 이상으로 구성하여야 합니다.");
 						return false;
 						
 					}else{
-						$("[name='patientBirth']").val($("#birthY").val() + "-" + $("#birthM").val()+"-" + $("#birthD").val());
+						$("[name='birth']").val($("#birthY").val() + "-" + $("#birthM").val()+"-" + $("#birthD").val());
 						return true;
 					}
 				}else{
@@ -153,16 +153,16 @@
 		          <div class="col-md-6 pr-md-5">
 		            <form action="${contextPath }/patient/register" method="post">
 		              <div class="form-group">
-		                <input type="text" name="patientId" id="patientId" class="form-control" minlength="6" maxlength="15" placeholder="ID를 입력해주세요." required="required">
+		                <input type="text" name="id" id="id" class="form-control" minlength="6" maxlength="15" placeholder="ID를 입력해주세요." required="required">
 		                <input type="button" id="btnOverlapped" class="btn btn-primary btn-outline-primary" value="중복확인">
 		                <p class="answer"></p>
 		              </div>
 		              <div class="form-group">
-		                <input type="password" name="patientPw" id="patientPw" class="form-control" placeholder="Password를 입력해주세요." required="required">
+		                <input type="password" name="password" id="password" class="form-control" placeholder="Password를 입력해주세요." required="required">
 		                <input type="password" id="confirmPasswd" placeholder="비밀번호를 다시 입력해주세요." class="form-control" required="required">
 		              </div>              
 		              <div class="form-group">
-		                <input type="text" name="patientName" class="form-control" placeholder="이름을 입력해주세요." required="required">
+		                <input type="text" name="name" class="form-control" placeholder="이름을 입력해주세요." required="required">
 		              </div>
 		              <div> 	
 		                <input type="text" class="form-control" value="생년월일을 선택해주세요." readonly="readonly">
@@ -201,10 +201,10 @@
 		                            </c:forEach>
 		                      </select>
 		                  </div>
-		                      <input type="hidden" name="patientBirth"/>
+		                      <input type="hidden" name="birth"/>
 		                <div>
 		                	<br> 	
-		                	<input type="email" class="form-control" id="patientEmail" name="patientEmail" placeholder="E-mail을 입력해주세요." required="required">
+		                	<input type="email" class="form-control" id="email" name="=email" placeholder="E-mail을 입력해주세요." required="required">
 		              		<input type="button" id="btnOverlappedEmail" class="btn btn-primary btn-outline-primary" value="중복확인">
 		              		<p class="answerEmail"></p>    
 		              	</div>
@@ -212,14 +212,14 @@
 		              		<br>
 		              	</div>
 		              	<div>
-		              		<input type="text" id="patientZipcode" name="patientZipcode"  class="form-control" placeholder="우편번호" required="required">
+		              		<input type="text" id="zipcode" name="zipcode"  class="form-control" placeholder="우편번호" required="required">
 		              		<input type="button" value="검색" onclick="execDaumPostcode();" class="btn btn-primary btn-outline-primary"> 
 		              		<div>
 		              			<br>
 		              		</div>
-		              		<input type="text" id="patientRoadAddress" name="patientRoadAddress"  class="form-control" placeholder="도로명 주소" required="required">
-		              		<input type="text" id="patientJibunAddress" name="patientJibunAddress"  class="form-control" placeholder="지번 주소" required="required">
-		              		<input type="text" id="patientNamujiAddress" name="patientNamujiAddress"  class="form-control" placeholder="나머지 주소">
+		              		<input type="text" id="roadAddress" name="patientRoadAddress"  class="form-control" placeholder="도로명 주소" required="required">
+		              		<input type="text" id="jibunAddress" name="patientJibunAddress"  class="form-control" placeholder="지번 주소" required="required">
+		              		<input type="text" id="namujiAddress" name="patientNamujiAddress"  class="form-control" placeholder="나머지 주소">
 		              	</div>
 		              	    <br>
 		               </div>

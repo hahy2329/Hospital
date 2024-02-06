@@ -4,6 +4,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.application.hospital.common.dto.CommonLoginDTO;
+import com.application.hospital.common.service.CustomUserDetails;
 import com.application.hospital.patient.dao.PatientDAO;
 import com.application.hospital.patient.dto.PatientDTO;
 
@@ -37,10 +38,10 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 	@Override
-	public void isertPatientInfo(PatientDTO patientDTO) throws Exception {
-		patientDTO.setPatientPw(bcryptPasswordEncoder.encode(patientDTO.getPatientPw()));
+	public void isertPatientInfo(CustomUserDetails customUserDetails) throws Exception {
+		customUserDetails.setPassword(bcryptPasswordEncoder.encode(customUserDetails.getPassword()));
 		
-		patientDAO.insertPatientInfo(patientDTO);
+		patientDAO.insertPatientInfo(customUserDetails);
 		
 	}
 
