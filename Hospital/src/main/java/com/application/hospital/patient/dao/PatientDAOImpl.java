@@ -14,10 +14,15 @@ import lombok.RequiredArgsConstructor;
 public class PatientDAOImpl implements PatientDAO {
 	
 	private final SqlSession sqlSession;
+
+	@Override
+	public String duplicatedIds(String id) throws Exception {
+		return sqlSession.selectOne("patient.duplicatedIds", id);
+	}
 	
 	@Override
-	public String getDuplicatedId(String patientId) throws Exception {
-		return sqlSession.selectOne("patient.duplicatedId", patientId);
+	public String getDuplicatedId(String id) throws Exception {
+		return sqlSession.selectOne("patient.duplicatedId", id);
 	}
 
 	@Override
@@ -45,6 +50,7 @@ public class PatientDAOImpl implements PatientDAO {
 	public String getLoginIdInfo(String loginId) throws Exception {
 		return sqlSession.selectOne("patient.getLoginIdInfo", loginId);
 	}
+
 
 
 }

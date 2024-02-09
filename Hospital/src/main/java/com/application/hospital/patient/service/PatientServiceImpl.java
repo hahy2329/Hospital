@@ -18,13 +18,25 @@ public class PatientServiceImpl implements PatientService {
 	private final BCryptPasswordEncoder bcryptPasswordEncoder;
 	
 	@Override
-	public String duplicatedId(String patientId) throws Exception {
-		if(patientDAO.getDuplicatedId(patientId)!= null) {
+	public String duplicatedIds(String id) throws Exception {
+		if(patientDAO.duplicatedIds(id) != null) {
 			
-			return "duplicate";
+			return "duplicated";
 			
 		}else {
+			
+			return "noDuplicated";
+		}
+	}
+
+	@Override
+	public String duplicatedId(String id) throws Exception {
+		if(patientDAO.getDuplicatedId(id) == null) {
+			
 			return "notDuplicate";
+			
+		}else {
+			return "duplicate";
 		}
 	}
 
@@ -60,5 +72,6 @@ public class PatientServiceImpl implements PatientService {
 			return null;
 		}
 	}
+
 
 }

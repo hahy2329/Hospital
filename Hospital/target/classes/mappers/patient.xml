@@ -2,6 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="patient">
+	
+	<select id="duplicatedIds" parameterType="String" resultType="String">
+		
+		SELECT
+			ID
+		FROM
+			CUSTOMMEMBER
+		WHERE
+			ID = #{id}
+	
+	</select>
+	
 	<select id="duplicatedId" parameterType="String" resultType="String">
 		
 		SELECT 
@@ -9,7 +21,7 @@
 		FROM
 			CUSTOMMEMBER
 		WHERE
-			ID = #{patientId}
+			ID = #{id}
 	</select>
 	
 	<select id="duplicatedEmail" parameterType="String" resultType="String">

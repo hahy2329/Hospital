@@ -47,12 +47,14 @@
 			} //특수문자 체크
 			
 			$.ajax({
+				
 				type : "get",
-				url : "${contextPath}/patient/checkDuplicatedId?id=" + id,
+				url : "${contextPath}/patient/checkDuplicatedIds?id=" +id,
 				success : function(data){
-					if(data == "notDuplicate"){
+					
+					if(data == "noDuplicated"){
 						alert("사용할 수 있는 ID입니다.");
-						$(".answer").append("<p style='color: green;'>" + "중복체크 완료" + "</p>");
+						$(".answer").append("<p style='color: green;'>" + "사용할 수 있는 ID입니다." +"</p>");
 						isValidId = true;
 					}else{
 						alert("사용할 수 없는 ID입니다.");

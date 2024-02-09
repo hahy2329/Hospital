@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.application.hospital.common.service.CustomUserDetails;
@@ -39,9 +40,18 @@ public class PatientController {
 		return mv;
 	}
 	
+	@GetMapping("/checkDuplicatedIds")
+	public ResponseEntity<String> checkDuplicatedIds(String id) throws Exception{
+		
+		return new ResponseEntity<String>(patientService.duplicatedIds(id), HttpStatus.OK);
+	}
+	
+	
 	@GetMapping("/checkDuplicatedId")
-	public ResponseEntity<String> checkDuplicatedId(String patientId) throws Exception{
-		return new ResponseEntity<String>(patientService.duplicatedId(patientId), HttpStatus.OK);
+	public ResponseEntity<String> checkDuplicatedId(String id) throws Exception{
+	
+		
+		return new ResponseEntity<String>(patientService.duplicatedId(id), HttpStatus.OK);
 		
 	}
 	
@@ -78,7 +88,7 @@ public class PatientController {
 		
 		String message = "<script>";
 		message +="alert('회원가입 완료!');";
-		message +="location.href='" + request.getContextPath() + "/';";
+		message +="location.href='" + request.getContextPath() + "/login';";
 		message +="</script>";
 		
 		HttpHeaders responseHeaders = new HttpHeaders();
