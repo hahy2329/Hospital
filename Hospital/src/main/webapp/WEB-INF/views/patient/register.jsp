@@ -52,14 +52,14 @@
 				url : "${contextPath}/patient/checkDuplicatedIds?id=" +id,
 				success : function(data){
 					
-					if(data == "noDuplicated"){
-						alert("사용할 수 있는 ID입니다.");
-						$(".answer").append("<p style='color: green;'>" + "사용할 수 있는 ID입니다." +"</p>");
-						isValidId = true;
-					}else{
+					if(data == "duplicated"){
 						alert("사용할 수 없는 ID입니다.");
-						$(".answer").append("<p style='color: red;'>" + "사용할 수 없는 ID입니다." + "</p>");
+						$(".answer").append("<p style='color: red;'>" + "사용할 수 없는 ID입니다." +"</p>");
 						isValidId = false;
+					}else{
+						alert("사용할 수 있는 ID입니다.");
+						$(".answer").append("<p style='color: green;'>" + "사용할 수 있는 ID입니다." + "</p>");
+						isValidId = true;
 					}
 				}
 			});
@@ -82,14 +82,14 @@
 				type : "get",
 				url : "${contextPath}/patient/checkDuplicatedEmail?email" + email,
 				success : function(data){
-					if(data == "notDuplicateEmail"){
-						alert("사용할 수 있는 Email입니다.");
-						$(".answerEmail").append("<p style='color: green;'>" + "사용할 수 있는 Email입니다." + "</p>");
-						isValidEmail = true;
-					}else{
+					if(data == "duplicateEmail"){
 						alert("사용할 수 없는 Email입니다.");
 						$(".answerEmail").append("<p style='color: red;'>" + "사용할 수 없는 Email입니다." + "</p>");
 						isValidEmail = false;
+					}else{
+						alert("사용할 수 있는 Email입니다.");
+						$(".answerEmail").append("<p style='color: green;'>" + "사용할 수 있는 Email입니다." + "</p>");
+						isValidEmail = true;
 					}
 				}	
 			});

@@ -47,7 +47,7 @@ public class PatientController {
 	}
 	
 	
-	@GetMapping("/checkDuplicatedId")
+	@GetMapping("/checkDuplicatedId") //삭제 예정
 	public ResponseEntity<String> checkDuplicatedId(String id) throws Exception{
 	
 		
@@ -96,6 +96,7 @@ public class PatientController {
 		
 		return new ResponseEntity<Object>(message, responseHeaders, HttpStatus.OK); 
 	}
+	
 	
 	@GetMapping("/logout")
 	public ResponseEntity<Object> logout(HttpServletRequest request) throws Exception{

@@ -19,13 +19,13 @@ public class PatientServiceImpl implements PatientService {
 	
 	@Override
 	public String duplicatedIds(String id) throws Exception {
-		if(patientDAO.duplicatedIds(id) != null) {
+		if(patientDAO.duplicatedIds(id) == null) {
 			
-			return "duplicated";
+			return "noDuplicated";
 			
 		}else {
 			
-			return "noDuplicated";
+			return "duplicated";
 		}
 	}
 
