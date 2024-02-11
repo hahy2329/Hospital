@@ -206,7 +206,7 @@
 		                      <input type="hidden" name="birth"/>
 		                <div>
 		                	<br> 	
-		                	<input type="email" class="form-control" id="email" name="=email" placeholder="E-mail을 입력해주세요." required="required">
+		                	<input type="email" class="form-control" id="email" name="email" placeholder="E-mail을 입력해주세요." required="required">
 		              		<input type="button" id="btnOverlappedEmail" class="btn btn-primary btn-outline-primary" value="중복확인">
 		              		<p class="answerEmail"></p>    
 		              	</div>
@@ -219,9 +219,9 @@
 		              		<div>
 		              			<br>
 		              		</div>
-		              		<input type="text" id="roadAddress" name="patientRoadAddress"  class="form-control" placeholder="도로명 주소" required="required">
-		              		<input type="text" id="jibunAddress" name="patientJibunAddress"  class="form-control" placeholder="지번 주소" required="required">
-		              		<input type="text" id="namujiAddress" name="patientNamujiAddress"  class="form-control" placeholder="나머지 주소">
+		              		<input type="text" id="roadAddress" name="roadAddress"  class="form-control" placeholder="도로명 주소" required="required">
+		              		<input type="text" id="jibunAddress" name="jibunAddress"  class="form-control" placeholder="지번 주소" required="required">
+		              		<input type="text" id="namujiAddress" name="namujiAddress"  class="form-control" placeholder="나머지 주소">
 		              	</div>
 		              	    <br>
 		               </div>
