@@ -29,7 +29,7 @@ public class CommonDAOImpl implements CommonDAO {
 
 	@Override
 	public String getBcryptPasswordEncoder(String loginId) throws Exception {
-		return sqlSession.selectOne("patient.getBcryptPasswordEncoder", loginId);
+		return sqlSession.selectOne("user.getBcryptPasswordEncoder", loginId);
 	}
 
 	@Override

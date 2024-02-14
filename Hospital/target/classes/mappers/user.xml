@@ -12,6 +12,18 @@
 	
 	
 	</select>
+	
+	
+	<select id="getBcryptPasswordEncoder" parameterType="String" resultType="String">
+		
+		SELECT
+			PASSWORD
+		FROM
+			CUSTOMMEMBER
+		WHERE
+			ID = #{loginId}
+	
+	</select>
 
 
 </mapper>
