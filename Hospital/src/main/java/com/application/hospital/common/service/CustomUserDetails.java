@@ -7,18 +7,19 @@ import java.util.Date;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class CustomUserDetails implements UserDetails {
-	//DB랑 상호작용 시 그릇역할
-	private String id;
+
+	
+	private String id; 
 	private String password;
 	private String name;
 	private Date birth;
@@ -31,8 +32,6 @@ public class CustomUserDetails implements UserDetails {
 	private String authority;
 	private boolean enabled;
 	private Date joindt;
-	
-	
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -58,24 +57,22 @@ public class CustomUserDetails implements UserDetails {
 
 	@Override
 	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean isEnabled() {
+		// TODO Auto-generated method stub
 		return enabled;
 	}
 	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
+	
 
 }
