@@ -22,10 +22,12 @@
 	login-processing-url="/login.do"
 	default-target-url="/loginSuccess"
 	authentication-failure-url="/loginSuccess"
-	always-use-default-target="true"	
+	always-use-default-target="true"
+		
 	/>
 	
 	</http>
+
 	<authentication-manager>
 		<authentication-provider ref="customAuthenticationProvider"/>
 		<authentication-provider user-service-ref="customUserDetailsService"/>

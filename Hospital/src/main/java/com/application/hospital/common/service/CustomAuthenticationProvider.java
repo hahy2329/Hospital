@@ -1,17 +1,27 @@
 package com.application.hospital.common.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.application.hospital.common.dao.CommonDAO;
+
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
-public class CustomAuthenticationProvider implements AuthenticationProvider {
 
-	private final CustomUserDetailsService customUserDetailsService;
+@NoArgsConstructor
+public class CustomAuthenticationProvider implements AuthenticationProvider {
+	
+	@Autowired
+	private UserDetailsService userDetailsService;
+	private BCryptPasswordEncoder bcryptPasswordEncoder;
+	private CommonDAO commonDAO;
 	
 	
 	@Override
@@ -19,27 +29,44 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 		String id = (String)authentication.getPrincipal();
 		String password = (String)authentication.getCredentials();
 		
-		try {
-			if(customUserDetailsService.matchPasswordEncoder(id, password)) {
-				CustomUserDetails user = (CustomUserDetails)customUserDetailsService.loadUserByUsername(id);
-				
-				UsernamePasswordAuthenticationToken result = new UsernamePasswordAuthenticationToken(user.getId(), user.getPassword(), user.getAuthorities());
-				result.setDetails(user);
-				
-				return result;
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
+		if(id.equals("")) {
+			return null;
 		}
 		
-		return null;
+		CustomUserDetails user = (CustomUserDetails)userDetailsService.loadUserByUsername(id);
+		System.out.println(user.getId());
+		
+		
+		if(user.getId()!= null) {
+			UsernamePasswordAuthenticationToken result = new UsernamePasswordAuthenticationToken(id, password, user.getAuthorities());
+			result.setDetails(user);
+			return result;
+		}else {
+			return null;
+		}
+		
+		
+		
 	}
 
 	@Override
 	public boolean supports(Class<?> authentication) {
 		// TODO Auto-generated method stub
 		return authentication.equals(UsernamePasswordAuthenticationToken.class);
+	}
+	
+	public boolean matchPasswordEncoder(String id, String password) throws Exception{
+		
+		boolean ready = false;
+		
+		if(bcryptPasswordEncoder.matches(password, commonDAO.getBcryptPasswordEncoder(id))) {
+			ready  = true;
+			
+			return ready;
+		}else {
+			return ready;
+		}
 	}
 	
 }
