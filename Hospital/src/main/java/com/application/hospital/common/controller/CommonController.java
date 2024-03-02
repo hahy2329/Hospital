@@ -76,7 +76,7 @@ public class CommonController {
 			
 		}else {
 			
-			httpSession.setAttribute("id", user.getUsername());
+			httpSession.setAttribute("id", user.getId());
 			httpSession.setMaxInactiveInterval(3600);
 			
 			message +="<script>";

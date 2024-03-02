@@ -24,6 +24,17 @@
 			ID = #{loginId}
 	
 	</select>
-
+	
+	<select id="loadByUserName" parameterType="String" resultType="CustomUserDetails">
+		
+		SELECT 
+			*
+		FROM
+			CUSTOMMEMBER
+		WHERE
+			ID = #{username}
+	
+	
+	</select>
 
 </mapper>

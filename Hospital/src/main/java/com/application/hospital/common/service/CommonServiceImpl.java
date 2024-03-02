@@ -53,4 +53,9 @@ public class CommonServiceImpl implements CommonService {
 		return commonDAO.getComplimentBoardDTO(complimentBoardId);
 	}
 
+	@Override
+	public CustomUserDetails loadByUserName(String username) throws Exception {
+		return commonDAO.loadByUserName(username);
+	}
+
 }

@@ -17,8 +17,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Component
-public class CustomUserDetails implements UserDetails {
+public class CustomUserDetails implements UserDetails{
 
 	
 	private String id; 
@@ -37,44 +36,32 @@ public class CustomUserDetails implements UserDetails {
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		ArrayList<GrantedAuthority> auth = new ArrayList<GrantedAuthority>();
-		auth.add(new SimpleGrantedAuthority(authority));
-		return auth;
+		// TODO Auto-generated method stub
+		return null;
 	}
-
-	@Override
-	public String getPassword() {
-		return password;
-	}
-
 	@Override
 	public String getUsername() {
+		// TODO Auto-generated method stub
 		return id;
 	}
-
 	@Override
 	public boolean isAccountNonExpired() {
-		return true;
+		// TODO Auto-generated method stub
+		return false;
 	}
-
 	@Override
 	public boolean isAccountNonLocked() {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
-
 	@Override
 	public boolean isCredentialsNonExpired() {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
+	
+	
+	
 
-	@Override
-	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return enabled;
-	}
-	
-	
 
 }

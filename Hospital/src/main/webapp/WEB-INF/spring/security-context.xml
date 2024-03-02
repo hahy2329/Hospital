@@ -30,9 +30,6 @@
 
 	<authentication-manager>
 		<authentication-provider ref="customAuthenticationProvider"/>
-		<authentication-provider user-service-ref="customUserDetailsService"/>
 	</authentication-manager>
-	<beans:bean id="customUserDetailsService" class="com.application.hospital.common.service.CustomUserDetailsService"/>
 	<beans:bean id="customAuthenticationProvider" class="com.application.hospital.common.service.CustomAuthenticationProvider"/>
-
 </beans:beans>
