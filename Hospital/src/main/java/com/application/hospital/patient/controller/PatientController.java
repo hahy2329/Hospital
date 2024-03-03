@@ -41,9 +41,9 @@ public class PatientController {
 	}
 	
 	@GetMapping("/checkDuplicatedIds")
-	public ResponseEntity<String> checkDuplicatedIds(String id) throws Exception{
+	public ResponseEntity<String> checkDuplicatedIds(String userName) throws Exception{
 		
-		return new ResponseEntity<String>(patientService.duplicatedIds(id), HttpStatus.OK);
+		return new ResponseEntity<String>(patientService.duplicatedIds(userName), HttpStatus.OK);
 	}
 	
 	
@@ -70,7 +70,7 @@ public class PatientController {
 		
 		CustomUserDetails customUserDetails = new CustomUserDetails();
 		
-		customUserDetails.setId(request.getParameter("id"));
+		customUserDetails.setUserName(request.getParameter("id"));
 		customUserDetails.setPassword(request.getParameter("password"));
 		customUserDetails.setName(request.getParameter("name"));
 		customUserDetails.setBirth(birthDt);

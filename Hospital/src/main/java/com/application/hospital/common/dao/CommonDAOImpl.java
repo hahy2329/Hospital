@@ -55,8 +55,8 @@ public class CommonDAOImpl implements CommonDAO {
 	}
 
 	@Override
-	public CustomUserDetails loadByUserName(String username) throws Exception {
-		return sqlSession.selectOne("user.loadByUserName", username);
+	public CustomUserDetails loadByUserName(String userName) throws Exception {
+		return sqlSession.selectOne("user.loadByUserName", userName);
 	}
 
 

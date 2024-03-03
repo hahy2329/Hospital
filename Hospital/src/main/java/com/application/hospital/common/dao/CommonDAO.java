@@ -15,6 +15,6 @@ public interface CommonDAO {
 	public void increaseReadCnt(long complimentBoardId) throws Exception;
 	public ComplimentBoardDTO getComplimentBoardDTO(long complimentBoardId) throws Exception;
 	public CustomUserDetails getLoginInfo(String username) throws Exception;
-	public CustomUserDetails loadByUserName(String username) throws Exception;
+	public CustomUserDetails loadByUserName(String userName) throws Exception;
 
 }

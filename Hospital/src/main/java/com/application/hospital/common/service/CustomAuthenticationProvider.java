@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
 
 import com.application.hospital.common.dao.CommonDAO;
 
+
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
@@ -33,23 +34,25 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 	
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-		String username = (String)authentication.getPrincipal();
+		String userName = (String)authentication.getPrincipal();
 		String password = (String)authentication.getCredentials();
 		
 		
-		if(username.equals("")) {
+		System.out.println(userName);
+		
+		if(userName.equals("")) {
 			return null;
 		}
 		
 		CustomUserDetails user = null;
 		try {
-			user = commonService.loadByUserName(username);
+			user = commonService.loadByUserName(userName);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		if(user.getId()!= null) {
+		if(user.getUsername()!= null) {
 			List<GrantedAuthority> roles = new ArrayList<GrantedAuthority>();
 			roles.add(new SimpleGrantedAuthority(user.getAuthority()));
 			UsernamePasswordAuthenticationToken result = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword(), roles);

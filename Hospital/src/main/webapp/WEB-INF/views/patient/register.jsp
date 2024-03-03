@@ -23,24 +23,24 @@
 			
 			$(".answer").empty();
 			
-			var id = $("#id").val();
+			var userName = $("#userName").val();
 			
-			if(id == ''){
+			if(userName == ''){
 				alert("ID를 입력하세요.");
 				$(".answer").append("<p style='color: red;'>" + "ID를 입력해 주세요." + "</p>");
 				return;
 			}
-			if(id.length < 6 || id.length > 15){
+			if(userName.length < 6 || userName.length > 15){
 				alert("6자리 이상 15자리 이하로 입력해 주세요.");
 				$(".answer").append("<p style='color: red;'>" + "6자리 이상 15자리 이하로 입력해 주세요." + "</p>");
 				return;
 			}
-			if(id.search(/\s/) != -1){
+			if(userName.search(/\s/) != -1){
 				alert("공백은 허용할 수 없습니다.");
 				$(".answer").append("<p style='color: red;'>" + "공백은 허용할 수 없습니다." + "</p>");
 				return false;
 			} //공백 체크
-			if(special_pattern.test(id) == true){
+			if(special_pattern.test(userName) == true){
 				alert("특수문자는 허용할 수 없습니다.");
 				$(".answer").append("<p style='color: red;'>" + "특수문자는 사용할 수 없습니다." + "</p>");
 				return false;
@@ -49,7 +49,7 @@
 			$.ajax({
 				
 				type : "get",
-				url : "${contextPath}/patient/checkDuplicatedIds?id=" +id,
+				url : "${contextPath}/patient/checkDuplicatedIds?userName=" +userName,
 				success : function(data){
 					
 					if(data == "duplicated"){
@@ -155,7 +155,7 @@
 		          <div class="col-md-6 pr-md-5">
 		            <form action="${contextPath }/patient/register" method="post">
 		              <div class="form-group">
-		                <input type="text" name="id" id="id" class="form-control" minlength="6" maxlength="15" placeholder="ID를 입력해주세요." required="required">
+		                <input type="text" name="userName" id="userName" class="form-control" minlength="6" maxlength="15" placeholder="ID를 입력해주세요." required="required">
 		                <input type="button" id="btnOverlapped" class="btn btn-primary btn-outline-primary" value="중복확인">
 		                <p class="answer"></p>
 		              </div>

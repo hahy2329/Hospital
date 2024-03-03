@@ -54,8 +54,8 @@ public class CommonServiceImpl implements CommonService {
 	}
 
 	@Override
-	public CustomUserDetails loadByUserName(String username) throws Exception {
-		return commonDAO.loadByUserName(username);
+	public CustomUserDetails loadByUserName(String userName) throws Exception {
+		return commonDAO.loadByUserName(userName);
 	}
 
 }

@@ -13,5 +13,5 @@ public interface CommonService {
 	public String checkLoginInfo(CommonLoginDTO commonLoginDTO) throws Exception;
 	public void complimentAddBoard(ComplimentBoardDTO complimentBoardDTO) throws Exception;
 	public ComplimentBoardDTO getComplimentBoardDTO(long complimentBoardId) throws Exception;
-	public CustomUserDetails loadByUserName(String username) throws Exception;
+	public CustomUserDetails loadByUserName(String userName) throws Exception;
 }

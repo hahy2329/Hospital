@@ -8,7 +8,7 @@
 		FROM
 			CUSTOMMEMBER
 		WHERE
-			ID = #{username}
+			USERNAME = #{userName}
 	
 	
 	</select>

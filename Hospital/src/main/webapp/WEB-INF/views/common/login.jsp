@@ -6,6 +6,30 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+	
+	const data = {
+		username : $("#loginId").val(),
+		password : $("#loginPassword").val()
+	};
+
+	$("form").submit(function(){
+		
+		$.ajax({
+			
+			type : "POST",
+			url : "${contextPath}/login.do",
+			dataType : "json",
+			contentType : "application/x-www-form-urlencoded; charset=utf-8",
+			data : data
+			
+		});
+		
+		
+		
+	});
+
+</script>
 </head>
 <body>
 	  <section class="home-slider owl-carousel">
@@ -46,10 +70,10 @@
           <div class="col-md-6 pr-md-5">
             <form action="${contextPath }/login.do" method="post">
               <div class="form-group">
-                <input type="text" name="loginId" class="form-control" placeholder="ID를 입력해주세요.">
+                <input type="text" name="loginId" id="loginId" class="form-control" placeholder="ID를 입력해주세요.">
               </div>
               <div class="form-group">
-                <input type="password" name="loginPassword" class="form-control" placeholder="Password를 입력해주세요.">
+                <input type="password" name="loginPassword" id="loginPassword" class="form-control" placeholder="Password를 입력해주세요.">
               </div>
               <div>
               	<input type="submit" value="로그인" class="btn btn-primary btn-outline-primary"/>

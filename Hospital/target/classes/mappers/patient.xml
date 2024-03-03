@@ -10,7 +10,7 @@
 		FROM
 			CUSTOMMEMBER
 		WHERE
-			ID = #{id}
+			ID = #{userName}
 	
 	</select>
 	

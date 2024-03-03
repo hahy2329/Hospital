@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class CustomUserDetails implements UserDetails{
 
 	
-	private String id; 
+	private String userName; 
 	private String password;
 	private String name;
 	private Date birth;
@@ -42,7 +42,7 @@ public class CustomUserDetails implements UserDetails{
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return id;
+		return userName;
 	}
 	@Override
 	public boolean isAccountNonExpired() {

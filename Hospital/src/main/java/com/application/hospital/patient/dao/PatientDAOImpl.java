@@ -16,8 +16,8 @@ public class PatientDAOImpl implements PatientDAO {
 	private final SqlSession sqlSession;
 
 	@Override
-	public String duplicatedIds(String id) throws Exception {
-		return sqlSession.selectOne("patient.duplicatedIds", id);
+	public String duplicatedIds(String userName) throws Exception {
+		return sqlSession.selectOne("patient.duplicatedIds", userName);
 	}
 	
 	@Override
