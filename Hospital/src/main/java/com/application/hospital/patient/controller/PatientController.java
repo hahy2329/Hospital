@@ -70,7 +70,7 @@ public class PatientController {
 		
 		CustomUserDetails customUserDetails = new CustomUserDetails();
 		
-		customUserDetails.setUserName(request.getParameter("id"));
+		customUserDetails.setUserName(request.getParameter("userName"));
 		customUserDetails.setPassword(request.getParameter("password"));
 		customUserDetails.setName(request.getParameter("name"));
 		customUserDetails.setBirth(birthDt);

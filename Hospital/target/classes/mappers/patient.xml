@@ -36,10 +36,10 @@
 	</select>
 	
 	<insert id="insertPatientInfo" parameterType="CustomUserDetails">
-		INSERT INTO CUSTOMMEMBER(ID, PASSWORD, NAME, BIRTH, EMAIL, ZIPCODE, ROAD_ADDRESS, JIBUN_ADDRESS, NAMUJI_ADDRESS, AUTHORITY)
+		INSERT INTO CUSTOMMEMBER(USERNAME, PASSWORD, NAME, BIRTH, EMAIL, ZIPCODE, ROAD_ADDRESS, JIBUN_ADDRESS, NAMUJI_ADDRESS, AUTHORITY)
 		
 		VALUES(
-			#{id},
+			#{userName},
 			#{password},
 			#{name},
 			#{birth},
